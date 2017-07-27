@@ -11,17 +11,21 @@ import React, { Component } from 'react';
      }
    }
 
+ handleChange = event => {this.setState({[event.target.id]: event.target.value})}
+ handleClick = event => {console.log('clicked')}
+
   render() {
     return (
       <div>
-      <h1>BOOK A TRIP</h1>
+      <h1>Juliet Airways</h1>
+      <h3>BOOK A TRIP</h3>
       <label htmlFor='from'>FROM: </label>
-      <input type='text' id='from' />
+      <input type='text' onChange={this.handleChange} id='from' />
       <label htmlFor='to'> TO: </label>
-      <input type='text' id='to' />
-      <label htmlFor='date'> DEPART DATE: </label>
-      <input type='date' id='date' />
-      <button type='button'>Find Flights</button>
+      <input type='text' onChange={this.handleChange}  id='to' />
+      <label htmlFor='departDate'> DEPART DATE: </label>
+      <input type='date' onChange={this.handleChange} id='departDate' />
+      <button onClick={this.handleClick} type='button'>Find Flights</button>
       </div>
     )
   }
