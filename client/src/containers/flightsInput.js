@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom'
 
  class FlightsInput extends Component {
 
@@ -25,7 +30,7 @@ import React, { Component } from 'react';
       <input type='text' onChange={this.handleChange}  id='to' />
       <label htmlFor='departDate'> DEPART DATE: </label>
       <input type='date' onChange={this.handleChange} id='departDate' />
-      <button onClick={this.handleClick} type='button'>Find Flights</button>
+      <Link to='/flights'><button onClick={this.handleClick} type='button'>Find Flights</button></Link>
       </div>
     )
   }

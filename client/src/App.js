@@ -2,16 +2,17 @@ import React, { Component } from 'react';
 import './App.css';
 import FlightsInput from './containers/flightsInput'
 import FlightsList from './components/flightsList'
+import { BrowserRouter as Router, Route} from 'react-router-dom'
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <FlightsInput />
-        <FlightsList />
-
-        <test />
-      </div>
+      <Router>
+        <div className="App">
+          <Route exact path='/' component={FlightsInput} />
+          <Route exact path='/flights' component={FlightsList} />
+        </div>
+      </Router>
     );
   }
 }
