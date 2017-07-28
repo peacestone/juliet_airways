@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from 'react-router-dom'
+
 
  class FlightsInput extends Component {
 
@@ -18,9 +14,7 @@ import {
 
  handleChange = event => {this.setState({[event.target.id]: event.target.value})}
  handleClick = event => {
-   console.log('clicked', 'FlightsInput')
-   console.log(this.props)
-   //this.params.router.replace('/flights')
+   console.log('clicked')
    this.props.history.push('/flights')
 
 }
