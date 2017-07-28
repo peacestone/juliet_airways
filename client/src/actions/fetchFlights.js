@@ -1,3 +1,6 @@
+import fetch from 'isomorphic-fetch'
+
+
 const fetchFlights = (dispatch) => {
   return (
     return (dispatch) => {

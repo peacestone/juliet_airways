@@ -7,8 +7,8 @@ import {
 
  class FlightsInput extends Component {
 
-   constructor(){
-     super()
+   constructor(props){
+     super(props)
      this.state = {
        from: '',
        to: '',
@@ -17,7 +17,13 @@ import {
    }
 
  handleChange = event => {this.setState({[event.target.id]: event.target.value})}
- handleClick = event => {console.log('clicked')}
+ handleClick = event => {
+   console.log('clicked', 'FlightsInput')
+   console.log(this.props)
+   //this.params.router.replace('/flights')
+   this.props.history.push('/flights')
+
+}
 
   render() {
     return (
@@ -30,7 +36,7 @@ import {
       <input type='text' onChange={this.handleChange}  id='to' />
       <label htmlFor='departDate'> DEPART DATE: </label>
       <input type='date' onChange={this.handleChange} id='departDate' />
-      <Link to='/flights'><button onClick={this.handleClick} type='button'>Find Flights</button></Link>
+      <button onClick={this.handleClick} type='button'>Find Flights</button>
       </div>
     )
   }
