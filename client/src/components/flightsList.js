@@ -1,10 +1,12 @@
 import React from 'react'
 import Flight from './flight'
+import {connect } from 'react-redux'
 
 
 
 const flightsList = (props) => {
-  const flights = [{flightNumber: 443, departing: 'jfk', ariving: 'lax', totalFlyTime: '4H 30M', price: 444, departureTime: 440, arivalTime: 900 }].map((flight, index) => <Flight key={index} flight={flight} />)
+  console.log(props.flights)
+  const flights = props.flights.map((flight, index) => <Flight key={index} flight={flight} />)
 
   return (
     <div><div className='flights-header'>
@@ -14,4 +16,10 @@ const flightsList = (props) => {
     </div> )
 }
 
-export default flightsList
+const mapStateToProps = state => {
+  return {flights: state.flights}
+}
+
+
+
+export default connect(mapStateToProps)(flightsList)

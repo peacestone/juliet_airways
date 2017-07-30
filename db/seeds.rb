@@ -7,4 +7,6 @@ Flight.create(flight_number: 432, departure_city: "LAX", arival_city: "JFK", dep
 
 Flight.create(flight_number: 111, departure_city: "JFK", arival_city: "FLL", departure_date_time: '2018-03-22 08:30:00', arival_date_time: '2018-03-22 10:50:00', price: 200 )
 
+Flight.create(flight_number: 75, departure_city: "JFK", arival_city: "FLL", departure_date_time: '2018-03-22 05:10:00', arival_date_time: '2018-03-22 07:50:00', price: 200 )
+
 puts "Done"
