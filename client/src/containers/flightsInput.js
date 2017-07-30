@@ -8,8 +8,8 @@ import {connect} from 'react-redux'
    constructor(props){
      super(props)
      this.state = {
-       from: '',
-       to: '',
+       departure_city: '',
+       arival_city: '',
        departDate: '',
      }
    }
@@ -17,7 +17,7 @@ import {connect} from 'react-redux'
  handleChange = event => {this.setState({[event.target.id]: event.target.value})}
  handleClick = event => {
    console.log('clicked')
-   this.props.fetchFlights()
+   this.props.fetchFlights(this.state)
    this.props.history.push('/flights')
 }
 
@@ -28,9 +28,9 @@ import {connect} from 'react-redux'
       <h1>Juliet Airways</h1>
       <h3>BOOK A TRIP</h3>
       <label htmlFor='from'>FROM: </label>
-      <input type='text' onChange={this.handleChange} id='from' />
+      <input type='text' onChange={this.handleChange} id='departure_city' />
       <label htmlFor='to'> TO: </label>
-      <input type='text' onChange={this.handleChange}  id='to' />
+      <input type='text' onChange={this.handleChange}  id='arival_city' />
       <label htmlFor='departDate'> DEPART DATE: </label>
       <input type='date' onChange={this.handleChange} id='departDate' />
       <button onClick={this.handleClick} type='button'>Find Flights</button>
