@@ -9,7 +9,7 @@ import flightReducer  from './reducers/flightReducer'
 import thunkMiddleware from 'redux-thunk'
 
 
-const store = createStore(flightReducer, applyMiddleware(thunkMiddleware), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() )
+const store = createStore(flightReducer, applyMiddleware(thunkMiddleware) )
 
 ReactDOM.render(
   <Provider store={store}>
