@@ -9,6 +9,7 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
+        <h1 id='logo'>Juliet Airways</h1>
           <Route exact path='/' component={FlightsInput} />
           <Route exact path='/flights' component={FlightsList} />
         </div>

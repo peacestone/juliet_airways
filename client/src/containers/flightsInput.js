@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux'
 import fetchFlights from '../actions/fetchFlights'
 import {connect} from 'react-redux'
+import { Button, Form, Grid, Header, Image, Input, Message, Segment } from 'semantic-ui-react'
 
  class FlightsInput extends Component {
 
@@ -12,28 +13,47 @@ import {connect} from 'react-redux'
        arival_city: '',
        departDate: '',
      }
+
    }
 
  handleChange = event => {this.setState({[event.target.id]: event.target.value})}
  handleClick = event => {
-   console.log('clicked')
    this.props.fetchFlights(this.state)
    this.props.history.push('/flights')
 }
+
+
+
+
+
 
   render() {
 
     return (
       <div>
-      <h1>Juliet Airways</h1>
-      <h3>BOOK A TRIP</h3>
-      <label htmlFor='from'>FROM: </label>
-      <input type='text' onChange={this.handleChange} id='departure_city' />
-      <label htmlFor='to'> TO: </label>
-      <input type='text' onChange={this.handleChange}  id='arival_city' />
-      <label htmlFor='departDate'> DEPART DATE: </label>
-      <input type='date' onChange={this.handleChange} id='departDate' />
-      <button onClick={this.handleClick} type='button'>Find Flights</button>
+
+          <Grid
+           textAlign='center'
+            style={{height: '100%'}}
+            verticalAlign='middle'
+            >
+            <Grid.Column style={{maxWidth: 450}}>
+            <Header as='h2' color='teal' text-align='center'>
+              Book a Flight </Header>
+              <Form size='large' >
+              <Segment stacked>
+              <Form.Input focus fluid size='large' onChange={this.handleChange} id='departure_city' placeholder='From' />
+              <Form.Input focus size='large' fluid onChange={this.handleChange}  id='arival_city' placeholder='To' />
+              <Form.Input  focus type='date' size='large' fluid onChange={this.handleChange} id='departDate' placeholder='Departure Date' />
+              <Button color='teal' onClick={this.handleClick} fluid size='large'>Search</Button>
+              </Segment>
+              </Form>
+
+            </Grid.Column>
+          </Grid>
+
+
+
       </div>
     )
   }

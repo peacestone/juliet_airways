@@ -1,16 +1,50 @@
-.App {
-  text-align: center;
+
+
+
+
+#slogan {
+  position: absolute;
+  right: 11%;
+  bottom: 33%;
+
+  font-size: 2.67em;
+    font-weight: 600;
+    line-height: 39px;
+    margin: 0;
+    letter-spacing: 1px;
+    color: #00ff43
+
+
 }
 
-
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+#logo {
+  font-style: italic;
+  font-weight: bold;
+  font-size: 35px;
+  left: 5%;
+  top: 7%;
+  text-decoration: underline;
+  font-weight: bolder;
+  position: relative;
+  color: teal;
 }
 
-.App-intro {
-  font-size: large;
+#changedflights-list {
+  background-color: #22659c;
+  min-height: 100%;
+  min-width: 100%;
+  position: absolute;
+}
+
+.changedflight {
+  background-color: #fff;
+  border-width: thick;
+  margin: 10px;
+  border-style: solid;
+  width: 50%;
+  right: 25%;
+  left: 25%;
+  display: inline-block;
+  font-size: 25px;
+  color: #3f229c
 }

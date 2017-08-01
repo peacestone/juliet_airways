@@ -7,6 +7,8 @@ import { Provider } from 'react-redux'
 import registerServiceWorker from './registerServiceWorker';
 import flightReducer  from './reducers/flightReducer'
 import thunkMiddleware from 'redux-thunk'
+import 'semantic-ui-css/semantic.min.css';
+
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
