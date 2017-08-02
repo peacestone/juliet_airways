@@ -10,14 +10,17 @@ const flight = (props) => {
   )}
 
   return (
+
     <Grid.Row  verticalAlign='middle' >
       <Grid.Column   width='14'>
         <span style={{fontSize: '13px'}}>Flight Number: {props.flight.flight_number}</span>
         <div className="timeInfo" style={{fontSize: '22px'}} >  {formatTime(props.flight.departure_date_time)}  >  {formatTime(props.flight.arival_date_time)}
         </div>
       </Grid.Column>
-      <Grid.Column width='2'>
+      <Grid.Column id='price' width='2'>
         Price: ${props.flight.price}
+        <Container className='hiddenText'text >Select</Container>
+
       </Grid.Column>
     </Grid.Row>
   )
