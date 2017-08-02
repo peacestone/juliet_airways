@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux'
 import fetchFlights from '../actions/fetchFlights'
 import {connect} from 'react-redux'
-import { Button, Form, Grid, Header, Image, Input, Message, Segment } from 'semantic-ui-react'
+import { Button, Form, Grid, Header, Segment } from 'semantic-ui-react'
 
  class FlightsInput extends Component {
 
@@ -38,7 +38,7 @@ import { Button, Form, Grid, Header, Image, Input, Message, Segment } from 'sema
             verticalAlign='middle'
             >
             <Grid.Column style={{maxWidth: 450}}>
-            <Header as='h2' color='teal' text-align='center'>
+            <Header as='h2' color='teal' textAlign='center'>
               Book a Flight </Header>
               <Form size='large' >
               <Segment stacked>

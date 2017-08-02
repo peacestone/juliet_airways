@@ -1,15 +1,23 @@
 import React from 'react'
-import { Grid } from 'semantic-ui-react'
+import { Grid, Container } from 'semantic-ui-react'
 
 const flight = (props) => {
+
+  const formatTime = time => {
+    const timeObj = new Date(time)
+    return (
+    timeObj.getHours() + ":" + timeObj.getMinutes()
+  )}
+
   return (
-    <Grid.Row verticalAlign='middle' >
-      <Grid.Column verticalAlign='middle' width='13'>
-        Flight Number: {props.flight.flight_number} Departing: {props.flight.departure_city} Ariving: {props.flight.arival_city} Total amount of flying time: {props.flight.totalFlyTime}
-        <span>Departure Time: {props.flight.departure_date_time}</span><span>Arival Time: {props.flight.arival_date_time}</span>
+    <Grid.Row  verticalAlign='middle' >
+      <Grid.Column   width='14'>
+        <span style={{fontSize: '13px'}}>Flight Number: {props.flight.flight_number}</span>
+        <div className="timeInfo" style={{fontSize: '22px'}} >  {formatTime(props.flight.departure_date_time)}  >  {formatTime(props.flight.arival_date_time)}
+        </div>
       </Grid.Column>
-      <Grid.Column width='1'>
-        Price: {props.flight.price}
+      <Grid.Column width='2'>
+        Price: ${props.flight.price}
       </Grid.Column>
     </Grid.Row>
   )
