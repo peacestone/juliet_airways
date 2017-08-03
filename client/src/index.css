@@ -8,10 +8,12 @@ wasbody. {
 
 }
 
-.flight-summary {
+.oldflight-summary {
 float: left;
 margin-bottom: 10px;
 margin-top: 15px;
 padding-left: 15px;
 width: 24.25em;
  }
+
+ html,body, #root, .App { height:100%; }

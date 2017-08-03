@@ -2,7 +2,7 @@ import React from 'react'
 import Flight from './flight'
 import {connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-import { Grid , Segment, Row, Container} from 'semantic-ui-react'
+import { Grid , Segment, Row, Container, Button, Menu} from 'semantic-ui-react'
 
 const InlineStyle = () => (
 <style>{`
@@ -26,9 +26,10 @@ const flightsList = (props) => {
   return (
     <div id='flights-list'>
     <InlineStyle />
-    <NavLink to='/'>Search Again</NavLink>
+
       <Container  style={{fontSize: '18px', lineHeight: '200%'}}>
-        <Grid  celled style={{maxWidth: '800px', margin: 'auto'}} >
+      <NavLink to='/'><Button  style={{  marginLeft: '74.1%'}}   >Search Again</Button></NavLink>
+        <Grid  celled style={{maxWidth: '70%', margin: 'auto'}} >
         <Grid.Row > FLL > JFK <br /> Friday, September 1, 2017</Grid.Row>
         {flights}
         </Grid>

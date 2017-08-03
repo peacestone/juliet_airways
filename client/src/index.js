@@ -13,12 +13,13 @@ import 'semantic-ui-css/semantic.min.css';
 
 
 
+
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(flightReducer, /* preloadedState, */composeEnhancers( applyMiddleware(thunkMiddleware) ))
 
 ReactDOM.render(
-  <Provider store={store}>
+  <Provider  store={store}>
     <App />
   </Provider>
   , document.getElementById('root'));
