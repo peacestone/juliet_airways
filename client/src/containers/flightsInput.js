@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux'
 import fetchFlights from '../actions/fetchFlights'
 import {connect} from 'react-redux'
-import { Button, Form, Grid, Header, Segment, Image } from 'semantic-ui-react'
+import { Button, Form, Grid, Header, Segment } from 'semantic-ui-react'
 
 
  class FlightsInput extends Component {
@@ -15,12 +15,6 @@ import { Button, Form, Grid, Header, Segment, Image } from 'semantic-ui-react'
        departure_date: '',
      }
 
-     const InlineStyle = (
-       <style>{`
-         background-image: url('https://content.delta.com/content/dam/delta-tnt/homepage/hero/4/go-see-skymiles-hero-1600.jpg);
-           background-size: cover;
-         `}</style>
-       )
 
 
    }

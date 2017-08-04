@@ -1,4 +1,4 @@
-const flightReducer = (state = {isLoading: false, flights: { flights: [] } }, action) => {
+const flightReducer = (state = {isLoading: false, flights: { flights: [], request: {departure_city: '', arival_city: '', departure_date: ''} } }, action) => {
   switch (action.type) {
     case 'LOADING_FLIGHTS':
       return Object.assign({}, state, {isLoading: 'true'})
