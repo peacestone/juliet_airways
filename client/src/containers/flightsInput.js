@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux'
 import fetchFlights from '../actions/fetchFlights'
 import {connect} from 'react-redux'
-import { Button, Form, Grid, Header, Segment } from 'semantic-ui-react'
+import { Button, Form, Input, Grid, Header, Segment } from 'semantic-ui-react'
 
 
  class FlightsInput extends Component {
@@ -46,7 +46,7 @@ import { Button, Form, Grid, Header, Segment } from 'semantic-ui-react'
               <Segment stacked>
               <Form.Input focus fluid size='large' onChange={this.handleChange} id='departure_city' placeholder='From' />
               <Form.Input focus size='large' fluid onChange={this.handleChange}  id='arival_city' placeholder='To' />
-              <Form.Input  focus type='date' size='large' fluid onChange={this.handleChange} id='departure_date' placeholder='Departure Date' />
+              <Form.Input  focus type='date' size='large' fluid onChange={this.handleChange} id='departure_date' placeholder='Departure Date'  />
               <Button color='green' onClick={this.handleClick} fluid size='large'>Search</Button>
               </Segment>
               </Form>

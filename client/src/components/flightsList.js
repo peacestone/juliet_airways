@@ -17,6 +17,12 @@ const InlineStyle = () => (
   .hiddenText {
     visibility: hidden
   }
+
+  #figureOUtflights-list {
+    background-color: #c6bbff
+  }
+
+
   `}</style>
 )
 
@@ -41,6 +47,7 @@ const flightsList = (props) => {
 const mapStateToProps = state => {
   return {flights: state.flights}
 }
+
 
 
 
