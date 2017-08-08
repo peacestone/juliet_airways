@@ -4,8 +4,9 @@ class CreateFlights < ActiveRecord::Migration[5.0]
       t.string :flight_number
       t.string :departure_city
       t.string :arival_city
-      t.datetime :departure_date_time
-      t.datetime :arival_date_time
+      t.string :departure_time
+      t.string :arival_time
+      t.string :total_fly_time
       t.integer :price
       t.timestamps
     end
