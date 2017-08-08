@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux'
 import fetchFlights from '../actions/fetchFlights'
 import {connect} from 'react-redux'
 import { Button, Form, Input, Grid, Header, Segment } from 'semantic-ui-react'
+import img from "../mt.jpeg"
 
 
  class FlightsInput extends Component {
@@ -31,9 +32,8 @@ import { Button, Form, Input, Grid, Header, Segment } from 'semantic-ui-react'
 
 
   render() {
-
     return (
-      <div style={{backgroundImage: "url('https://content.delta.com/content/dam/delta-tnt/homepage/hero/4/go-see-skymiles-hero-1600.jpg')",backgroundSize: 'cover', minHeight: '100%'}}>
+      <div style={{backgroundImage: "url(" + img  + ")", backgroundSize: 'cover', minHeight: '100%'}}>
           <Grid
            textAlign='center'
             style={{height: '100%'}}
