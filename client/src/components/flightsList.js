@@ -3,6 +3,9 @@ import Flight from './flight'
 import {connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { Grid , Container, Dropdown, Button, Menu} from 'semantic-ui-react'
+import sortAction from '../actions/sortAction'
+import {bindActionCreators} from 'redux'
+
 
 const InlineStyle = () => (
 <style>{`
@@ -31,14 +34,18 @@ const InlineStyle = () => (
 
 class flightsList extends React.Component {
 
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
-
+      filter: '',
+      dropdownValue: "Sort By"
     }
   }
 
-  handleFilterChange = (event, data) => {console.log(event, data)}
+  handleFilterClick = (event, data) => {
+    this.setState({dropdownValue: data.text, filter: 'data.name '})
+    this.props.sortAction(data.name)
+  }
 
 render() {
 
@@ -48,15 +55,14 @@ render() {
     <InlineStyle />
 
 
-
       <Container   style={{fontSize: '18px', lineHeight: '200%'}}>
-      <NavLink to='/'><Button  color='green' style={{marginLeft: '64.1%'}}>Search Again</Button></NavLink>
+      <NavLink to='/'>Search Again</NavLink>
 
-      <Dropdown  text='filter'  icon='filter' color='green' labeled button className='icon' >
+      <Dropdown  text={this.state.dropdownValue}  icon='filter' color='green' labeled button className='icon' >
         <Dropdown.Menu>
-          <Dropdown.Item onClick={this.handleFilterChange} >Price</Dropdown.Item>
-          <Dropdown.Item onClick={this.handleFilterChange} >Arival Time</Dropdown.Item>
-          <Dropdown.Item onClick={this.handleFilterChange} >Departure Time</Dropdown.Item>
+          <Dropdown.Item name='price' text='Price' onClick={this.handleFilterClick} />
+          <Dropdown.Item name='arival_time' onClick={this.handleFilterClick} text='Arival Time'  />
+          <Dropdown.Item name='departure_time' onClick={this.handleFilterClick} text='Departure Time' />
         </Dropdown.Menu>
       </Dropdown>
         <Grid  celled style={{width: '70%', margin: 'auto'}} >
@@ -80,7 +86,11 @@ const mapStateToProps = state => {
   return {flights: state.flights}
 }
 
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({sortAction: sortAction}, dispatch)
+}
 
 
 
-export default connect(mapStateToProps)(flightsList)
+
+export default connect(mapStateToProps, mapDispatchToProps)(flightsList)

@@ -20,3 +20,4 @@ const flight = (props) => {
 }
 
 export default flight
+//hours = ((hours + 11) % 12 + 1);
