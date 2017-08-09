@@ -3,7 +3,7 @@ import Flight from './flight'
 import {connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { Grid , Container, Dropdown, Button, Menu} from 'semantic-ui-react'
-import sortAction from '../actions/sortAction'
+import fetchFlights from '../actions/fetchFlights'
 import {bindActionCreators} from 'redux'
 
 
@@ -43,8 +43,11 @@ class flightsList extends React.Component {
   }
 
   handleFilterClick = (event, data) => {
+    console.log(this.props.flights.request)
     this.setState({dropdownValue: data.text, filter: 'data.name '})
-    this.props.sortAction(data.name)
+    const requestWithSort = Object.assign({}, this.props.flights.request, {sort_by: data.name} )
+
+    this.props.fetchFlights(requestWithSort)
   }
 
 render() {
@@ -87,7 +90,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators({sortAction: sortAction}, dispatch)
+  return bindActionCreators({ fetchFlights }, dispatch)
 }
 
 
