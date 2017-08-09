@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(version: 20170728205824) do
     t.string   "flight_number"
     t.string   "departure_city"
     t.string   "arival_city"
-    t.integer  "departure_time"
-    t.integer  "arival_time"
+    t.datetime "departure_time"
+    t.datetime "arival_time"
     t.string   "total_fly_time"
     t.integer  "price"
     t.datetime "created_at",     null: false

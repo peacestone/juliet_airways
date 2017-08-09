@@ -1,6 +1,7 @@
 class Flight < ApplicationRecord
 
   def self.format_time(time)
+    #binding.pry
     time.strftime("%I:%M %p")
   end
 
