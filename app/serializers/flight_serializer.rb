@@ -1,5 +1,5 @@
 class FlightSerializer < ActiveModel::Serializer
-  attributes :departure_time, :arival_time, :price, :flight_number
+  attributes :departure_time, :arival_time, :price, :flight_number, :total_fly_time
 
   def departure_time
     Flight.format_time(object.departure_time)
@@ -8,6 +8,12 @@ class FlightSerializer < ActiveModel::Serializer
   def arival_time
     Flight.format_time(object.arival_time)
   end
+
+  def total_fly_time
+    Time.at(object.arival_time - object.departure_time).utc.strftime "%Hh %Mm"
+  end
+
+
 
 
 end

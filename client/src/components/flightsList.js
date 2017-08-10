@@ -1,8 +1,8 @@
 import React from 'react'
 import Flight from './flight'
 import {connect } from 'react-redux'
-import { NavLink } from 'react-router-dom'
-import { Grid , Container, Dropdown, Button, Menu} from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
+import { Grid , Container, Dropdown, Button, Header, Menu} from 'semantic-ui-react'
 import fetchFlights from '../actions/fetchFlights'
 import {bindActionCreators} from 'redux'
 
@@ -42,37 +42,35 @@ class flightsList extends React.Component {
     }
   }
 
-  handleFilterClick = (event, data) => {
-    console.log(this.props.flights.request)
-    this.setState({dropdownValue: data.text, filter: 'data.name '})
-    const requestWithSort = Object.assign({}, this.props.flights.request, {sort_by: data.name} )
+  handleFilterChange = (event, data) => {
+    this.setState({dropdownValue: data.value, filter: 'data.name '})
+    const requestWithSort = Object.assign({}, this.props.flights.request, {sort_by: data.value} )
 
     this.props.fetchFlights(requestWithSort)
   }
 
 render() {
-
-  const flights = this.props.flights.flights.map((flight, index) => <Flight key={index} flight={flight} /> )
+ const sortOptions = [ {text: 'Departure Time', value: 'departure_time'}, {  text: 'Arival Time', value: 'arival_time'}, {text: 'Price', value: 'price'}]
+ const flights = this.props.flights.flights.map((flight, index) => <Flight key={index} flight={flight} /> )
   return (
     <div id='flights-list'>
     <InlineStyle />
 
 
       <Container   style={{fontSize: '18px', lineHeight: '200%'}}>
-      <NavLink to='/'>Search Again</NavLink>
+      <Container textAlign='right' style={{ width: '70%'}}>
+      <Link to='/'>Search Again</Link>
+      </Container >
 
-      <Dropdown  text={this.state.dropdownValue}  icon='filter' color='green' labeled button className='icon' >
-        <Dropdown.Menu>
-          <Dropdown.Item name='price' text='Price' onClick={this.handleFilterClick} />
-          <Dropdown.Item name='arival_time' onClick={this.handleFilterClick} text='Arival Time'  />
-          <Dropdown.Item name='departure_time' onClick={this.handleFilterClick} text='Departure Time' />
-        </Dropdown.Menu>
-      </Dropdown>
-        <Grid  celled style={{width: '70%', margin: 'auto'}} >
+        <Grid  celled style={{width: '70%', margin: 'auto', marginBottom: '4%'}} >
           <Grid.Row >
-            {this.props.flights.request.departure_city} > {this.props.flights.request.arival_city} <br /> {this.props.flights.request.departure_date}
 
+          <Header color='violet'  >  {this.props.flights.request.departure_city} > {this.props.flights.request.arival_city}    <br /> {this.props.flights.request.departure_date}</Header >
 
+            <span style={{marginRight: '70%',  color: '#6f51b0'}}><strong>Sorted By</strong> {' '}
+
+               <Dropdown inline onChange={this.handleFilterChange} options={sortOptions} defaultValue={sortOptions[0].value} />
+            </span>
           </Grid.Row>
 
 
@@ -85,13 +83,18 @@ render() {
   }
 }
 
-const mapStateToProps = state => {
+
+
+const mapStateToProps = (state) => {
   return {flights: state.flights}
 }
 
 const mapDispatchToProps = dispatch => {
   return bindActionCreators({ fetchFlights }, dispatch)
 }
+
+
+
 
 
 
