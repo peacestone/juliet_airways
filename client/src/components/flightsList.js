@@ -5,7 +5,7 @@ import { Link} from 'react-router-dom'
 import { Grid , Container, Dropdown, Header} from 'semantic-ui-react'
 import fetchFlights from '../actions/fetchFlights'
 import {bindActionCreators} from 'redux'
-
+import selectFlight from '../actions/selectFlight'
 
 const InlineStyle = () => (
 <style>{`
@@ -34,9 +34,17 @@ const InlineStyle = () => (
 
 class flightsList extends React.Component {
 
-  handlePriceClick = () => {this.props.history.push('/flights/trip-summary')}
+  constructor(props) {
+    super(props)
+    this.state = {
+      didSelectFlight: false
+    }
+  }
 
-
+  handlePriceClick = (event, data) => {
+    this.setState({didSelectFlight: true})
+    this.props.history.push('/flights/trip-summary')
+  }
   handleFilterChange = (event, data) => {
     this.setState({dropdownValue: data.value, filter: 'data.name '})
     const requestWithSort = Object.assign({}, this.props.flights.request, {sort_by: data.value} )
@@ -46,7 +54,11 @@ class flightsList extends React.Component {
 
 render() {
  const sortOptions = [ {text: 'Departure Time', value: 'departure_time'}, {  text: 'Arival Time', value: 'arival_time'}, {text: 'Price', value: 'price'}]
- const flights = this.props.flights.flights.map((flight, index) => <Flight key={index}  flight={flight} /> )
+
+
+   const flights = this.props.flights.flights.map((flight, index) => <Flight key={index}   flight={flight} /> )
+
+
   return (
     <div id='flights-list'>
     <InlineStyle />
@@ -67,9 +79,11 @@ render() {
                <Dropdown inline onChange={this.handleFilterChange} options={sortOptions} defaultValue={sortOptions[0].value} />
             </span>
           </Grid.Row>
-        {flights}
+          {flights}
         </Grid>
       </Container>
+
+      {this.state.didSelectFlight && <Flight flight='hi' />}
 
     </div> )
   }
@@ -78,11 +92,11 @@ render() {
 
 
 const mapStateToProps = (state) => {
-  return {flights: state.flights}
+  return {flights: state.flights, selectedFlight: state.selectedFlight}
 }
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ fetchFlights }, dispatch)
+  return bindActionCreators({ fetchFlights, selectFlight }, dispatch)
 }
 
 

@@ -1,3 +1,5 @@
-export default selectedFlight = flight => (
+ const selectedFlight = flight => (
   {type: 'SELECT_FLIGHT', payload: flight}
 )
+
+export default selectedFlight
