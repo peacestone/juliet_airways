@@ -1,8 +1,8 @@
 import React from 'react'
 import Flight from './flight'
 import {connect } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { Grid , Container, Dropdown, Button, Header, Menu} from 'semantic-ui-react'
+import { Link} from 'react-router-dom'
+import { Grid , Container, Dropdown, Header} from 'semantic-ui-react'
 import fetchFlights from '../actions/fetchFlights'
 import {bindActionCreators} from 'redux'
 
@@ -12,11 +12,11 @@ const InlineStyle = () => (
   #dropdown {
 
   }
-  #price:hover {
+  .price:hover {
     background-color: blue;
     color: #fff;
   }
-  #price:hover .hiddenText {
+  .price:hover .hiddenText {
     visibility: visible;
     font-weight: bold
   }
@@ -34,13 +34,8 @@ const InlineStyle = () => (
 
 class flightsList extends React.Component {
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      filter: '',
-      dropdownValue: "Sort By"
-    }
-  }
+  handlePriceClick = () => {this.props.history.push('/flights/trip-summary')}
+
 
   handleFilterChange = (event, data) => {
     this.setState({dropdownValue: data.value, filter: 'data.name '})
@@ -51,7 +46,7 @@ class flightsList extends React.Component {
 
 render() {
  const sortOptions = [ {text: 'Departure Time', value: 'departure_time'}, {  text: 'Arival Time', value: 'arival_time'}, {text: 'Price', value: 'price'}]
- const flights = this.props.flights.flights.map((flight, index) => <Flight key={index} flight={flight} /> )
+ const flights = this.props.flights.flights.map((flight, index) => <Flight key={index}  flight={flight} /> )
   return (
     <div id='flights-list'>
     <InlineStyle />
@@ -72,9 +67,6 @@ render() {
                <Dropdown inline onChange={this.handleFilterChange} options={sortOptions} defaultValue={sortOptions[0].value} />
             </span>
           </Grid.Row>
-
-
-
         {flights}
         </Grid>
       </Container>

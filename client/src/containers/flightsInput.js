@@ -42,7 +42,7 @@ import img from "../mt.jpeg"
             <Grid.Column style={{maxWidth: 450}}>
             <Header as='h2' color='green' textAlign='center'>
               Book a Flight </Header>
-              <Form autocomplete="on" size='large' >
+              <Form autoComplete="on" size='large' >
               <Segment stacked>
               <Form.Input focus fluid size='large' onChange={this.handleChange} id='departure_city' placeholder='From' />
               <Form.Input focus size='large' fluid onChange={this.handleChange}  id='arival_city' placeholder='To' />
