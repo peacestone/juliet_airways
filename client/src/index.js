@@ -5,7 +5,7 @@ import App from './App';
 import { createStore, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 import registerServiceWorker from './registerServiceWorker';
-import flightReducer  from './reducers/flightReducer'
+import rootReducer  from './reducers/rootReducer'
 import thunkMiddleware from 'redux-thunk'
 import 'semantic-ui-css/semantic.min.css';
 
@@ -16,7 +16,7 @@ import 'semantic-ui-css/semantic.min.css';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const store = createStore(flightReducer, /* preloadedState, */composeEnhancers( applyMiddleware(thunkMiddleware) ))
+const store = createStore(rootReducer, /* preloadedState, */composeEnhancers( applyMiddleware(thunkMiddleware) ))
 
 ReactDOM.render(
   <Provider  store={store}>

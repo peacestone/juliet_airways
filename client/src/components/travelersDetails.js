@@ -29,11 +29,13 @@ class TripSummary extends React.Component {
 
   handleChange = (event, data) => {this.setState({[data.name]: data.value})}
 
+  handleSubmit = (event, data) => console.log(this.state)
+
   render() {
-    const {value} = this.state
     return (
     <div id='tripSummary'>
-      <Segment  floated='right' style={{width: '15%'}} raised>
+     <Header  textAlign='center'  as='h1'>Traveler Information</Header>
+      <Segment   style={{width: '15%', position: 'fixed', right: '3.5%'}} raised>
         <Header>Flight Itinerary</Header>
         Departs:<strong> {this.props.request.departure_city}</strong> <br />
         <span> {this.props.request.departure_date}, {this.props.selectedFlight.departure_time} </span> <br /> <br />
@@ -43,8 +45,7 @@ class TripSummary extends React.Component {
       </Segment>
 
      <Container style={{width: '70%', float: 'left', paddingLeft: '10%'}}>
-     <Header as='h1'>Traveler Information</Header>
-        <Form >
+        <Form onSubmit={this.handleSubmit} >
         <Form.Group widths='equal' >
           <Form.Input required name='firstName' label='First Name' onChange={this.handleChange}/>
           <Form.Input required name='lastName' label='Last Name' onChange={this.handleChange}/>
@@ -58,18 +59,19 @@ class TripSummary extends React.Component {
         <Divider  section />
 
         <Form.Group inline >
-          <label htmlFor='gender' >Gender *</label>
+          <label htmlFor='gender' >Gender </label>
           <Form.Radio name='gender' id='gender' label='Male' value='male' checked={this.state.gender === 'male'} onChange={this.handleChange} />
           <Form.Radio id='gender' name='gender' label='Female' value='female' checked={this.state.gender === 'female'} onChange={this.handleChange} />
           <Form.Radio  name='gender' label='Other' value='other' checked={this.state.gender === 'other'} onChange={this.handleChange} />
         </Form.Group>
+
         <Form.Group inline>
           <label>Date of birth</label>
           <Form.Input name='month' placeholder='MM' width='2' onChange={this.handleChange} />
           <Form.Input name='day' placeholder='DD' width='2' onChange={this.handleChange} />
           <Form.Input name='year' placeholder='YYYY' width='3' onChange={this.handleChange} />
-
         </Form.Group>
+
         <Form.Group inline>
           <label>Address line 1</label>
           <Form.Input name='address1'  width='6' onChange={this.handleChange} />
@@ -118,13 +120,14 @@ class TripSummary extends React.Component {
         <Form.Button>Contiue</Form.Button>
         </Form>
        </Container>
+
        </div>
       )
     }
   }
 
 const mapStateToProps = state => (
-  {request: state.flights.request, selectedFlight: state.selectedFlight}
+  {request: state.flights.request, selectedFlight: state.flights.selectedFlight}
 )
 
 

@@ -15,6 +15,7 @@ const fetchFlights = (flightInput) => {
         }
       )
        .then(response => response.json() )
+
        .then((flights) => {return dispatch({type: 'FETCH_FLIGHTS', payload: flights })})
      }
    )

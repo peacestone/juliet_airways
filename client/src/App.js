@@ -13,6 +13,7 @@ class App extends Component {
           <Route exact path='/' component={FlightsInput} />
           <Route exact path='/flights/travelersDetails' component={TravelersDetails} />
           <Route exact path='/flights' component={FlightsList} />
+
         </div>
       </Router>
     );

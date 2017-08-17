@@ -1,11 +1,11 @@
 
 
-const flightReducer = (state = {isLoading: false, flights: { flights: [], request: {departure_city: '', arival_city: '', departure_date: ''} }, selectedFlight: {} }, action) => {
+const flights = (state = {isLoading: false,  flights: [], request: {departure_city: '', arival_city: '', departure_date: ''}, selectedFlight: {} }, action) => {
   switch (action.type) {
     case 'LOADING_FLIGHTS':
       return Object.assign({}, state, {isLoading: 'true'})
      case 'FETCH_FLIGHTS':
-    return Object.assign({}, {isLoading: 'false', flights: action.payload})
+    return Object.assign({}, {isLoading: 'false'}, action.payload)
     case 'SELECT_FLIGHT':
       return Object.assign({}, state, {selectedFlight: action.payload})
       default:
@@ -14,4 +14,4 @@ const flightReducer = (state = {isLoading: false, flights: { flights: [], reques
 
   }
 
-  export default flightReducer
+  export default flights
