@@ -13,7 +13,7 @@ class paymentsInput extends React.Component {
   render() {
     return (
       <div id='paymentsInput'>
-    <Container style={{marginTop: '4%'}}>
+    <Container style={{marginTop: '4%', marginBottom: '4%'}}>
     <Header size='large'>Your Flight</Header>
         <Segment>
           <Table celled>
@@ -33,19 +33,21 @@ class paymentsInput extends React.Component {
                 <Table.Cell>{this.props.selectedFlight.departure_time} to {' '}{this.props.selectedFlight.arival_time}</Table.Cell>
                 <Table.Cell>{this.props.request.departure_city} to {this.props.request.arival_city} </Table.Cell>
                 <Table.Cell>{this.props.selectedFlight.flight_number}</Table.Cell>
-                <Table.Cell>{this.props.traveler_info.firstName} {this.props.traveler_info.lastName}</Table.Cell>
+                <Table.Cell><Table.Cell>{this.props.traveler_info.firstName} {this.props.traveler_info.lastName}</Table.Cell></Table.Cell>
               </Table.Row>
             </Table.Body>
-
           </Table>
-
         </Segment>
+
+        <Divider section  />
+
+        <Header  size='large'>Payment Details</Header>
+        <Header >Total: ${this.props.selectedFlight.price}</Header>
 
         <Divider section hidden />
 
-        <Header  size='large'>Payment Details</Header>
-
-        <Segment>
+        <Header block attached='top' >Enter Payment Information</Header>
+        <Segment attached >
         <Form>
 
           <Form.Group inline>
@@ -65,9 +67,11 @@ class paymentsInput extends React.Component {
             <Form.Input label='Billing Postal Code' placeholder='Enter Postal Code' />
           </Form.Group>
 
-          <Form.Button color='orange'>Complete Purchase</Form.Button>
         </Form>
         </Segment>
+
+        <Divider hidden />
+        <Form.Button color='orange'>Complete Purchase</Form.Button>
 
       </Container>
 

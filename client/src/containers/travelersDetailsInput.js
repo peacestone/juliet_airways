@@ -17,12 +17,6 @@ class TripSummary extends React.Component {
       month: '',
       day: '',
       year: '',
-      address1: '',
-      address2: '',
-      city: '',
-      country: '',
-      state: '',
-      zip: '',
       email: '',
       confirmEmail: '',
       telephone: ''
@@ -40,7 +34,6 @@ class TripSummary extends React.Component {
   render() {
     return (
     <div id='tripSummary'>
-     <Header  textAlign='center'  as='h1'>Traveler Information</Header>
       <Segment   style={{width: '15%', position: 'fixed', right: '3.5%'}} raised>
         <Header>Flight Itinerary</Header>
         Departs:<strong> {this.props.request.departure_city}</strong> <br />
@@ -49,7 +42,7 @@ class TripSummary extends React.Component {
         <span>{this.props.request.departure_date}, {this.props.selectedFlight.arival_time}</span><br /> <br />
         <span>Total:</span><strong>${this.props.selectedFlight.price}</strong>
       </Segment>
-
+      <Header  textAlign='center'  as='h1'>Traveler Information</Header>
      <Container style={{width: '70%', float: 'left', paddingLeft: '10%'}}>
         <Form onSubmit={this.handleSubmit} >
         <Form.Group widths='equal' >
@@ -78,35 +71,6 @@ class TripSummary extends React.Component {
           <Form.Input name='year' placeholder='YYYY' value={this.state.year} width='3' onChange={this.handleChange} />
         </Form.Group>
 
-        <Form.Group inline>
-          <label>Address line 1</label>
-          <Form.Input name='address1' value={this.state.address1}  width='6' onChange={this.handleChange} />
-        </Form.Group>
-
-        <Form.Group inline>
-          <label>Address line 2</label>
-          <Form.Input name='address2'  value={this.state.address2} width='6'  onChange={this.handleChange} />
-        </Form.Group>
-
-        <Form.Group inline>
-          <label>City</label>
-          <Form.Input name='city' value={this.state.city} width='6'  onChange={this.handleChange} />
-        </Form.Group>
-
-        <Form.Group inline>
-          <label>Country</label>
-          <Form.Input name='country' value={this.state.country}  width='6'  onChange={this.handleChange} />
-        </Form.Group>
-
-        <Form.Group inline>
-          <label>state</label>
-          <Form.Input name='state'  value={this.state.state} width='6'  onChange={this.handleChange} />
-        </Form.Group>
-
-        <Form.Group inline>
-          <label>Zip</label>
-          <Form.Input name='zip'  width='6' value={this.state.zip} onChange={this.handleChange} />
-        </Form.Group>
 
         <Form.Group inline>
           <label>Email</label>
@@ -123,7 +87,7 @@ class TripSummary extends React.Component {
           <Form.Input name='telephone'   width='6' value={this.state.telephone}  onChange={this.handleChange} />
         </Form.Group>
 
-        <Form.Button>Contiue</Form.Button>
+        <Form.Button color='orange'>Contiue</Form.Button>
         </Form>
        </Container>
        </div>
