@@ -34,6 +34,7 @@ class TripSummary extends React.Component {
   render() {
     return (
     <div id='tripSummary'>
+    <Divider hidden  />
       <Segment   style={{width: '15%', position: 'fixed', right: '3.5%'}} raised>
         <Header>Flight Itinerary</Header>
         Departs:<strong> {this.props.request.departure_city}</strong> <br />

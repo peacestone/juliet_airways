@@ -6,11 +6,12 @@ const fetchFlights = (flightInput) => {
   return (
     (dispatch) => {
      dispatch({type: 'LOADING_FLIGHTS'})
-     return fetch('http://localhost:3001/api/find-flights', {
+      fetch('http://localhost:3001/api/find-flights', {
       headers: myHeaders,
        method: 'POST',
        //body: JSON.stringify({flights: flightInput})
-       body: JSON.stringify({flights: {departure_city: 'ATL', arival_city: "JFK", departure_date: '2017-10-22'}})
+       body: JSON.stringify(
+         {flights: {departure_city: 'ATL', arival_city: "JFK", departure_date: '2017-10-22'}})
 
         }
       )
