@@ -9,16 +9,16 @@ class TripSummary extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      firstName: '',
-      lastName: '',
-      middleName: '',
-      frequentFlyerNumber: '',
+      first_name: '',
+      last_name: '',
+      middle_name: '',
+      frequent_flyer_number: '',
       gender: '',
       month: '',
       day: '',
       year: '',
       email: '',
-      confirmEmail: '',
+      confirm_email: '',
       telephone: ''
     }
   }
@@ -47,13 +47,13 @@ class TripSummary extends React.Component {
      <Container style={{width: '70%', float: 'left', paddingLeft: '10%'}}>
         <Form onSubmit={this.handleSubmit} >
         <Form.Group widths='equal' >
-          <Form.Input value={this.state.firstName} required name='firstName' label='First Name' onChange={this.handleChange}/>
-          <Form.Input required name='lastName' value={this.state.lastName}label='Last Name' onChange={this.handleChange}/>
-          <Form.Input  name='middleName' value={this.state.middleName}label='Middle Name' onChange={this.handleChange} />
+          <Form.Input value={this.state.first_name} required name='first_name' label='First Name' onChange={this.handleChange}/>
+          <Form.Input required name='last_name' value={this.state.last_name}label='Last Name' onChange={this.handleChange}/>
+          <Form.Input  name='middle_name' value={this.state.middle_name}label='Middle Name' onChange={this.handleChange} />
         </Form.Group>
         <Divider   />
         <Form.Group widths='4' >
-          <Form.Input name='frequentFlyerNumber' value={this.state.frequentFlyerNumber} label='Frequent Flyer Number' onChange={this.handleChange}/>
+          <Form.Input name='frequent_flyer_number' value={this.state.frequent_flyer_number} label='Frequent Flyer Number' onChange={this.handleChange}/>
         </Form.Group>
 
         <Divider  section />
@@ -80,7 +80,7 @@ class TripSummary extends React.Component {
 
         <Form.Group inline>
           <label>Confirm Email</label>
-          <Form.Input type='text' name='confirmEmail' value={this.state.confirmEmail}  width='6'  onChange={this.handleChange} />
+          <Form.Input type='text' name='confirm_email' value={this.state.confirmEmail}  width='6'  onChange={this.handleChange} />
         </Form.Group>
 
         <Form.Group inline>

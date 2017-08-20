@@ -18,7 +18,11 @@ class paymentsInput extends React.Component {
   }
 
   handleSubmit = (event, data) => {
-    this.props.createReservation(Object.assign({}, this.props.traveler_info, this.state))
+    console.log(this.props.traveler_info)
+    console.log(this.props.request.departure_date )
+    console.log(this.props.selectedFlight.flight_number)
+
+    this.props.createReservation(Object.assign({},  this.props.traveler_info, {departure_date: this.props.request.departure_date} , {flight_number: this.props.selectedFlight.flight_number}, {payment_info: this.state}))
   }
 
   handleChange = (event, data) => {
