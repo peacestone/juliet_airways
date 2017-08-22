@@ -8,21 +8,19 @@ class paymentsInput extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      cardNumber: '',
+      card_number: '',
       month: '',
       year: '',
-      securityCode: '',
-      nameOnCard: '',
-      billingPostalCode: ''
+      security_code: '',
+      name_on_card: '',
+      billing_postal_code: ''
     }
   }
 
   handleSubmit = (event, data) => {
-    console.log(this.props.traveler_info)
-    console.log(this.props.request.departure_date )
-    console.log(this.props.selectedFlight.flight_number)
-
     this.props.createReservation(Object.assign({},  this.props.traveler_info, {departure_date: this.props.request.departure_date} , {flight_number: this.props.selectedFlight.flight_number}, {payment_info: this.state}))
+
+    this.props.history.push('/reservations/success')
   }
 
   handleChange = (event, data) => {
@@ -30,7 +28,6 @@ class paymentsInput extends React.Component {
   }
 
   render() {
-    console.log(this.state)
     return (
       <div id='paymentsInput'>
     <Container style={{marginTop: '4%', marginBottom: '4%'}}>
@@ -70,7 +67,7 @@ class paymentsInput extends React.Component {
         <Form onSubmit={this.handleSubmit}>
         <Segment attached >
           <Form.Group inline>
-            <Form.Input  name='cardNumber' value={this.state.cardNumber} onChange={this.handleChange} label='Card Number' width='5' placeholder='Enter Credit Card Number'  />
+            <Form.Input  name='card_number' value={this.state.card_number} onChange={this.handleChange} label='Card Number' width='5' placeholder='Enter Credit Card Number'  />
           </Form.Group>
 
           <Form.Group inline>
@@ -78,12 +75,12 @@ class paymentsInput extends React.Component {
             <Form.Input name='month' value={this.state.month} onChange={this.handleChange} placeholder='Month' width='2' />
             <Form.Input name='year' value={this.state.year} onChange={this.handleChange} placeholder='Year' width='3' />
             <label>Security Code</label>
-            <Form.Input name='securityCode' value={this.state.securityCode} onChange={this.handleChange} placeholder='Enter Code' width='3' />
+            <Form.Input name='security_code' value={this.state.security_code} onChange={this.handleChange} placeholder='Enter Code' width='3' />
           </Form.Group>
 
           <Form.Group inline>
-            <Form.Input  name='nameOnCard' value={this.state.nameOnCard} onChange={this.handleChange} label='Name On Card' placeholder='Enter Name' />
-            <Form.Input  name='billingPostalCode' value={this.state.nameOnCard} onChange={this.handleChange} value={this.state.billingPostalCode} label='Billing Postal Code' placeholder='Enter Postal Code' />
+            <Form.Input  name='name_on_card' value={this.state.name_on_card} onChange={this.handleChange} label='Name On Card' placeholder='Enter Name' />
+            <Form.Input  name='billing_postal_code' value={this.state.billing_postal_code} onChange={this.handleChange} label='Billing Postal Code' placeholder='Enter Postal Code' />
           </Form.Group>
         </Segment> <br />
         <Form.Button size='large' color='orange'>Complete Purchase</Form.Button>

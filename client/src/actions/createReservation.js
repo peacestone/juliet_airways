@@ -11,7 +11,7 @@ const createReservation = (travelerAndFlightInfo) => (
       body: JSON.stringify({reservation: travelerAndFlightInfo})
     })
     .then(response => response.json())
-    .then(json => dispatch({type: 'RECIEVE_RESERVATION' , json}))
+    .then(({reservation}) => dispatch({type: 'RECIEVE_RESERVATION' , payload: {reservation}}))
     .then(json => console.log(json))
 
 

@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route} from 'react-router-dom'
 import { Segment, Header } from 'semantic-ui-react'
 import TravelersDetailsInput from './containers/travelersDetailsInput'
 import PaymentsInput from './containers/paymentsInput'
+import ReservationSuccess from './components/reservationSuccess'
 
 class App extends Component {
   render() {
@@ -15,6 +16,7 @@ class App extends Component {
           <Route exact path='/' component={FlightsInput} />
           <Route exact path='/flights/travelersDetails' component={TravelersDetailsInput} />
           <Route exact path='/flights/payments' component={PaymentsInput} />
+          <Route exact path='/reservations/success' component={ReservationSuccess} />
           <Route exact path='/flights' component={FlightsList} />
         </div>
       </Router>
