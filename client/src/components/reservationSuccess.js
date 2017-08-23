@@ -1,6 +1,5 @@
 import React from 'react'
 import {Segment, Container, Header } from 'semantic-ui-react'
-import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 
 const Success = ({reservation}) => (
@@ -33,7 +32,6 @@ const Success = ({reservation}) => (
 )
 
 const mapStateToProps = state => {
-console.log(state.reservations)
   return {reservation: state.reservations.reservation}
 }
 

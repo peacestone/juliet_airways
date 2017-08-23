@@ -2,29 +2,27 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux'
 import fetchFlights from '../actions/fetchFlights'
 import {connect} from 'react-redux'
-import { Button, Form, Input, Grid, Header, Segment } from 'semantic-ui-react'
+import {  Menu, Grid, Segment } from 'semantic-ui-react'
 import img from "../mt.jpeg"
-
+import BookAFlight from './bookAFlight'
+import MyTrips from './myTrips'
+import FlightStatus from './flightStatus'
 
  class FlightsInput extends Component {
 
    constructor(props){
      super(props)
      this.state = {
-       departure_city: '',
-       arival_city: '',
-       departure_date: '',
+       activeItem: 'bookAFlight',
      }
-
-
-
    }
 
- handleChange = event => {this.setState({[event.target.id]: event.target.value})}
- handleClick = event => {
-   this.props.fetchFlights(this.state)
-   this.props.history.push('/flights')
-}
+
+
+handleItemClick = (event, data) => {
+  this.setState({activeItem: data.name}
+
+)}
 
 
 
@@ -32,24 +30,34 @@ import img from "../mt.jpeg"
 
 
   render() {
+    var widgetComponent = <div />
+    if (this.state.activeItem === 'bookAFlight') {
+      widgetComponent = <BookAFlight />
+    }
+    else if (this.state.activeItem === 'myTrips') {
+      widgetComponent = <MyTrips />
+    }
+    else {
+      widgetComponent = <FlightStatus />
+
+    }
     return (
-      <div style={{backgroundImage: "url(" + img  + ")", backgroundSize: 'cover', minHeight: '100%'}}>
+      <div style={{backgroundImage: "url(" + img  + ")", backgroundSize: 'cover', minHeight: '100%'}} >
           <Grid
            textAlign='center'
             style={{height: '100%'}}
             verticalAlign='middle'
             >
             <Grid.Column style={{maxWidth: 450}}>
-            <Header as='h2' color='green' textAlign='center'>
-              Book a Flight </Header>
-              <Form autoComplete="on" size='large' >
-              <Segment stacked>
-              <Form.Input focus fluid size='large' onChange={this.handleChange} id='departure_city' placeholder='From' />
-              <Form.Input focus size='large' fluid onChange={this.handleChange}  id='arival_city' placeholder='To' />
-              <Form.Input  focus type='date' size='large' fluid onChange={this.handleChange} id='departure_date' placeholder='Departure Date'  />
-              <Button color='green' onClick={this.handleClick} fluid size='large'>Search</Button>
+              <Menu pointing attached='top' widths={3}>
+                <Menu.Item name='bookAFlight'onClick={this.handleItemClick}  active={this.state.activeItem === 'bookAFlight'} > Book a Flight </Menu.Item>
+                <Menu.Item name='myTrips' active={this.state.activeItem === 'myTrips'} onClick={this.handleItemClick}>My Trips </Menu.Item>
+                <Menu.Item name='flightStatus' onClick={this.handleItemClick} active={this.state.activeItem === 'flightStatus'} >Flight Status</Menu.Item>
+              </Menu>
+
+              <Segment stacked attached='bottom'>
+                {widgetComponent}
               </Segment>
-              </Form>
 
             </Grid.Column>
           </Grid>

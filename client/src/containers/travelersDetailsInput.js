@@ -1,5 +1,5 @@
 import React from 'react'
-import {Segment, Divider,Header, Form, Button, Container, Grid} from 'semantic-ui-react'
+import {Segment, Divider,Header, Form, Container} from 'semantic-ui-react'
 import {connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import addTravelersDetails from '../actions/addTravelersDetails'
