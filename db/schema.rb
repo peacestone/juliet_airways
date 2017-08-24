@@ -34,9 +34,11 @@ ActiveRecord::Schema.define(version: 20170818140603) do
     t.string   "email"
     t.string   "telephone"
     t.string   "flight_number"
+    t.string   "confirmation_number"
     t.datetime "departure_date"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
+    t.index ["confirmation_number"], name: "index_reservations_on_confirmation_number", unique: true
   end
 
 end

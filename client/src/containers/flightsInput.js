@@ -21,7 +21,6 @@ import FlightStatus from './flightStatus'
 
 handleItemClick = (event, data) => {
   this.setState({activeItem: data.name}
-
 )}
 
 
