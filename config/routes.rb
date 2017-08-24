@@ -4,4 +4,6 @@ Rails.application.routes.draw do
 
   post 'api/reservations', to: 'reservations#create'
 
+  post 'api/reservations/find', to: 'reservations#find'
+
 end

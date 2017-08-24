@@ -21,7 +21,7 @@ const Success = ({reservation}) => (
     <Container style={{width: '39%', float: 'right' }} >
       <Segment >
         <Header dividing size='large'>Payment Summary</Header>
-        <strong style={{marginRight: '4%'}}>Method of Payment:</strong><span> VI {reservation.payment_info.card_number}</span> <br />
+        {reservation.payment_info && (<div><strong style={{marginRight: '4%'}}>Method of Payment:</strong><span> VI {reservation.payment_info.card_number}</span></div>)} <br />
         <strong style={{marginRight: '4%'}}>Total Price:</strong>
         <span>${reservation.flight.price}</span>
       </Segment>

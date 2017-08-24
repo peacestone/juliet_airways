@@ -9,7 +9,7 @@ class MyTrips extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      confimation_number: '',
+      confirmation_number: '',
       first_name: '',
       last_name: ''
     }
@@ -26,7 +26,7 @@ class MyTrips extends Component {
   render(){
     return(
       <Form autoComplete="on" size='large' >
-      <Form.Input focus fluid size='large' onChange={this.handleChange} name='confimation_number' placeholder='Confimation Number' />
+      <Form.Input focus fluid size='large' onChange={this.handleChange} name='confirmation_number' placeholder='Confirmation Number' />
       <Form.Input focus size='large' fluid onChange={this.handleChange}  name='first_name' placeholder='First Name' />
       <Form.Input  focus size='large' fluid onChange={this.handleChange} name='last_name' placeholder='Last Name'  />
       <Button color='green' onClick={this.handleClick} fluid size='large'>FIND MY TRIP</Button>
