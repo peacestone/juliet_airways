@@ -3,7 +3,6 @@ import fetch from 'isomorphic-fetch'
 const createReservation = (travelerAndFlightInfo) => (
    (dispatch) => {
     dispatch({type: 'FETCHING_RESERVATION'})
-    console.log(travelerAndFlightInfo)
 
     fetch('http://localhost:3001/api/reservations', {
       method: 'POST',
@@ -12,7 +11,6 @@ const createReservation = (travelerAndFlightInfo) => (
     })
     .then(response => response.json())
     .then(({reservation}) => dispatch({type: 'RECIEVE_RESERVATION' , payload: {reservation}}))
-    .then(json => console.log(json))
 
 
   }

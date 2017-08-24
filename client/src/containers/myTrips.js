@@ -1,7 +1,11 @@
 import React, {Component} from 'react'
 import {Form, Button} from 'semantic-ui-react'
+import {withRouter} from 'react-router'
+import findReservation from '../actions/findReservation'
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
 
-export default class MyTrips extends Component {
+class MyTrips extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -11,11 +15,12 @@ export default class MyTrips extends Component {
     }
   }
 
-  handleChange = event => {this.setState({[event.target.id]: event.target.value})}
+  handleChange = (e, {name, value}) => {
+    this.setState({[name]: value})}
 
   handleClick = event => {
-    this.props.fetchFlights(this.state)
-    this.props.history.push('/flights')
+    this.props.findReservation(this.state)
+    this.props.history.push('/reservations/confirmed')
  }
 
   render(){
@@ -29,3 +34,11 @@ export default class MyTrips extends Component {
     )
   }
 }
+
+const mapDispatchToProps = dispatch => (
+  bindActionCreators({findReservation: findReservation}, dispatch)
+)
+
+
+
+export default withRouter(connect(null, mapDispatchToProps)(MyTrips))

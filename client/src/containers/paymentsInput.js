@@ -18,9 +18,11 @@ class paymentsInput extends React.Component {
   }
 
   handleSubmit = (event, data) => {
+    event.preventDefault()
+
     this.props.createReservation(Object.assign({},  this.props.traveler_info, {departure_date: this.props.request.departure_date} , {flight_number: this.props.selectedFlight.flight_number}, {payment_info: this.state}))
 
-    this.props.history.push('/reservations/success')
+    this.props.history.push('/reservations/confirmed')
   }
 
   handleChange = (event, data) => {

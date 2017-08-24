@@ -16,7 +16,7 @@ class App extends Component {
           <Route exact path='/' component={FlightsInput} />
           <Route exact path='/flights/travelersDetails' component={TravelersDetailsInput} />
           <Route exact path='/flights/payments' component={PaymentsInput} />
-          <Route exact path='/reservations/success' component={ReservationSuccess} />
+          <Route exact path='/reservations/confirmed' component={ReservationSuccess} />
           <Route exact path='/flights' component={FlightsList} />
         </div>
       </Router>
