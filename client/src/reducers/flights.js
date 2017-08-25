@@ -4,11 +4,10 @@ const flights = (state = {isLoading: false,  flights: [], request: {departure_ci
   switch (action.type) {
     case 'LOADING_FLIGHTS':
       return Object.assign({}, state, {isLoading: 'true'})
-     case 'FETCH_FLIGHTS':
+     case 'RECEIVE_FLIGHTS':
     return Object.assign({}, {isLoading: 'false'}, action.payload)
     case 'SELECT_FLIGHT':
       return Object.assign({}, state, {selectedFlight: action.payload})
-      default:
         return state
       }
 
