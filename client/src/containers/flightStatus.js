@@ -4,15 +4,18 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import { withRouter } from 'react-router'
 import moment from 'moment'
+import getFlightStatus from '../actions/getFlightStatus'
 
+const today = moment().local()
+const todayISO = today.clone().toISOString()
 
 class FlightStatus extends Component {
   constructor(props) {
     super(props)
-    this.today = moment().local(),
-    this.todayISO = this.today.clone().toISOString(),
+    this.today = today
+    this.todayISO = todayISO
     this.state = {
-      flight_date: this.todayISO,
+      flight_date: todayISO,
       flight_number: ''
     }
   }
@@ -21,8 +24,8 @@ class FlightStatus extends Component {
 
 
   handleClick = event => {
-    //this.props.fetchFlights(this.state)
-    this.props.history.push('/flights')
+    this.props.getFlightStatus(this.state)
+    //this.props.history.push('/flights/status')
   }
 
    handleChange = (e, {name, value}) => {
@@ -48,9 +51,10 @@ class FlightStatus extends Component {
   }
 }
 
-//const mapDispatchToProps = dispatch => (
-//)
+const mapDispatchToProps = dispatch => (
+  bindActionCreators({getFlightStatus: getFlightStatus}, dispatch)
+)
 
 
 
-export default withRouter(connect(null, null)(FlightStatus))
+export default withRouter(connect(null, mapDispatchToProps)(FlightStatus))

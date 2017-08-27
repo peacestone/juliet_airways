@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  post 'api/find-flights', to: 'flights#find'
+  post 'api/flights/find', to: 'flights#find'
+
+  post 'api/flights/status', to: 'flights#status'
 
   post 'api/reservations', to: 'reservations#create'
 

@@ -17,9 +17,21 @@ class FlightsController < ApplicationController
 
   end
 
+
+  def status
+    flight = Flight.find(status_params[:flight_number])
+    render json: flight, flight_status: 'ON TIME', serializer: FlightStatusSerializer, meta: {
+      flight_date: Flight.format_date(DateTime.iso8601(status_params[:flight_date]))
+    }
+  end
+
   private
 
   def flight_params
     params.require(:flights).permit(:departure_city, :sort_by, :arival_city, :departure_date)
+  end
+
+  def status_params
+    params.require(:flights).permit(:flight_date, :flight_number)
   end
 end

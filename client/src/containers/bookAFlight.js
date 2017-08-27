@@ -29,7 +29,7 @@ class BookAFlight extends Component {
       <Form.Input focus fluid size='large' onChange={this.handleChange} id='departure_city' placeholder='From' />
       <Form.Input focus size='large' fluid onChange={this.handleChange}  id='arival_city' placeholder='To' />
       <Form.Input  focus type='date' size='large' fluid onChange={this.handleChange} id='departure_date' placeholder='Departure Date'  />
-      <Button color='green' onClick={this.handleClick} fluid size='large'>Search</Button>
+      <Button color='green' onClick={this.handleClick} fluid size='large'>FIND FLIGHTS</Button>
       </Form>
     )
   }

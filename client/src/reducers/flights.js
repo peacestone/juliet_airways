@@ -8,6 +8,7 @@ const flights = (state = {isLoading: false,  flights: [], request: {departure_ci
     return Object.assign({}, {isLoading: 'false'}, action.payload)
     case 'SELECT_FLIGHT':
       return Object.assign({}, state, {selectedFlight: action.payload})
+      default:
         return state
       }
 
