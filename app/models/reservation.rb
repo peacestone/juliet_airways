@@ -1,13 +1,10 @@
 class Reservation < ApplicationRecord
   extend Format_date
-  #validates :confirmation_number, uniqueness: true
-  #validates_uniqueness_of :confirmation_number, :first_name, allow_nil: true
-
-
 
   after_create :generate_confirmation
 
   belongs_to :flight, foreign_key: 'flight_number'
+
 
   private
 

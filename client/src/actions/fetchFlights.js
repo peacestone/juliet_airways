@@ -9,9 +9,9 @@ const fetchFlights = (flightInput) => {
       fetch('http://localhost:3001/api/flights/find', {
       headers: {'Content-Type': 'application/json'},
        method: 'POST',
-       //body: JSON.stringify({flights: flightInput})
-       body: JSON.stringify(
-         {flights: {departure_city: 'ATL', arival_city: "JFK", departure_date: '2017-10-22'}})
+       body: JSON.stringify({flights: flightInput})
+       //body: JSON.stringify(
+         //{flights: {departure_city: 'ATL', arival_city: "JFK", departure_date: '2017-10-22'}})
         }
       )
        .then(response => response.json() )
