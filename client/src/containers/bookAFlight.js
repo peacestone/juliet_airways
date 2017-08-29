@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Form, Button, Message} from 'semantic-ui-react'
+import {Form, Button, Message,Label, Icon} from 'semantic-ui-react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import fetchFlights from '../actions/fetchFlights'
@@ -24,6 +24,7 @@ class BookAFlight extends Component {
     }
     this.handleClick = this.handleClick.bind(this)
   }
+
 
   validateForm = (formInput) => {
     const validCitys = ['ATL', 'JFK']
@@ -72,7 +73,7 @@ class BookAFlight extends Component {
     return(
       <Form error={!this.state.isValidForm} autoComplete="on" size='large' >
       {!this.state.isValidForm && <Message error header={`Please Fix the ${Object.values(this.state.formErrors).length} fields indicated`}  list={Object.values(this.state.formErrors) } />}
-      <Form.Input error={!!this.state.departureCityIsInvalid} focus fluid size='large' onChange={this.handleChange} id='departure_city' placeholder='From'  />
+      <Form.Input error={!!this.state.departureCityIsInvalid} focus  size='large' onChange={this.handleChange}  id='departure_city' placeholder='From'  />
       <Form.Input error={!!this.state.arivalCityIsInvalid} focus size='large' fluid onChange={this.handleChange}  id='arival_city' placeholder='To' />
       <Form.Input error={!!this.state.departureDateIsInvalid}  focus type='date' size='large' fluid onChange={this.handleChange} id='departure_date' placeholder='Departure Date'  />
       <Button color='green' onClick={this.handleClick} fluid size='large'>FIND FLIGHTS</Button>
