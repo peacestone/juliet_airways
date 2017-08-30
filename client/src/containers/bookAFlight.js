@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Form, Button, Message,Label, Icon} from 'semantic-ui-react'
+import {Form, Button,Dropdown, Message,Label, Icon} from 'semantic-ui-react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import fetchFlights from '../actions/fetchFlights'
@@ -30,16 +30,16 @@ class BookAFlight extends Component {
     const validCitys = ['ATL', 'JFK']
     let errors = {}
     let isValid = true
-    if (!validCitys.includes(this.state.arival_city)) {
+    if (formInput.arival_city === '') {
       isValid = false
       this.setState({arivalCityIsInvalid: true})
-     errors.arival_city = 'Please enter a valid destination city to continue'
+     errors.arival_city = 'Please enter a valid arival city city to continue'
     }
 
-    if (!validCitys.includes(formInput.departure_city)) {
+    if (formInput.departure_city === '') {
       isValid = false
-      errors.departure_city = 'Please enter a valid departure city to continue'
-    this.setState({departureCityIsInvalid: true})
+      errors.departure_city = 'Please enter a departure city to continue'
+      this.setState({departureCityIsInvalid: true})
   }
 
     if (!formInput['departure_date']) {
@@ -50,10 +50,10 @@ class BookAFlight extends Component {
     return {isValid: isValid, errors: errors}
   }
 
-  handleChange = event => {this.setState({[event.target.id]: event.target.value})}
+  handleChange = (e, data) => { this.setState({[data.name]: data.value})}
 
-  handleClick = function(event) {
-
+  handleClick = function(e, data) {
+    debugger
     const isValid = this.validateForm(this.state)
     if (isValid.isValid){
       const {arival_city, departure_city, departure_date} = this.state
@@ -69,13 +69,18 @@ class BookAFlight extends Component {
 
 
   render(){
+    const cityOptions = [{key: 'JFK', text: 'New York- Kennedy, NY (JFK)', value: 'JFK'}, {key: 'ATL', text: 'Atlanta, GA (ATL)', value: "ATL"}]
 
     return(
       <Form error={!this.state.isValidForm} autoComplete="on" size='large' >
+
       {!this.state.isValidForm && <Message error header={`Please Fix the ${Object.values(this.state.formErrors).length} fields indicated`}  list={Object.values(this.state.formErrors) } />}
-      <Form.Input error={!!this.state.departureCityIsInvalid} focus  size='large' onChange={this.handleChange}  id='departure_city' placeholder='From'  />
-      <Form.Input error={!!this.state.arivalCityIsInvalid} focus size='large' fluid onChange={this.handleChange}  id='arival_city' placeholder='To' />
-      <Form.Input error={!!this.state.departureDateIsInvalid}  focus type='date' size='large' fluid onChange={this.handleChange} id='departure_date' placeholder='Departure Date'  />
+
+      <Form.Dropdown placeholder='From' onChange={this.handleChange} name='departure_city' error={!!this.state.departureCityIsInvalid} noResultsMessage="Sorry, we don't fly there yet" minCharacters={3} search selection options={cityOptions} />
+
+      <Form.Dropdown onChange={this.handleChange} placeholder='To' name='arival_city' error={!!this.state.arivalCityIsInvalid} noResultsMessage="Sorry, we don't fly there yet" minCharacters={3} search selection options={cityOptions} />
+
+      <Form.Input error={!!this.state.departureDateIsInvalid} name='departure_date' focus type='date' size='large' fluid onChange={this.handleChange} placeholder='Departure Date'  />
       <Button color='green' onClick={this.handleClick} fluid size='large'>FIND FLIGHTS</Button>
       {console.log(this.state)}
       </Form>

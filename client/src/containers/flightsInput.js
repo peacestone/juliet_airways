@@ -29,7 +29,7 @@ handleItemClick = (event, data) => {
 
 
   render() {
-    var widgetComponent = <div />
+    let widgetComponent = <div />
     if (this.state.activeItem === 'bookAFlight') {
       widgetComponent = <BookAFlight />
     }
