@@ -8,7 +8,11 @@ export default (reservation_query) => {
       body: JSON.stringify({reservation: reservation_query})
     })
 
-    .then(response => response.json())
+    .then(
+      response => {
+        response.json()
+      }
+    )
     .then(({reservation}) => dispatch({type: 'RECIEVE_RESERVATION', payload: {reservation}}))
   }
 }

@@ -9,7 +9,14 @@ const createReservation = (travelerAndFlightInfo) => (
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({reservation: travelerAndFlightInfo})
     })
-    .then(response => response.json())
+    .then(response => {
+      console.log(response)
+      if (response.ok) {
+      return response.json()
+      }
+      throw new Error(response.statusText)
+    }
+  )
     .then(({reservation}) => dispatch({type: 'RECIEVE_RESERVATION' , payload: {reservation}}))
 
 

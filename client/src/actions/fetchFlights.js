@@ -18,7 +18,7 @@ const fetchFlights = (flightInput) => {
          if (response.ok) {
          return response.json()
         }
-        throw new Error('THis is awesome')
+        throw new Error(response.statusText)
        })
 
        .then((flights) => {return dispatch({type: 'RECEIVE_FLIGHTS', payload: flights })})
