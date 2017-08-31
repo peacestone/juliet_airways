@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux'
 import fetchFlights from '../actions/fetchFlights'
 import {connect} from 'react-redux'
-import {  Menu, Grid, Segment } from 'semantic-ui-react'
+import {  Menu, Grid, Segment, Container } from 'semantic-ui-react'
 import img from "../mt.jpeg"
 import BookAFlight from './bookAFlight'
 import MyTrips from './myTrips'
 import FlightStatus from './flightStatus'
+
+
 
  class FlightsInput extends Component {
 
@@ -45,7 +47,7 @@ handleItemClick = (event, data) => {
           <Grid
            textAlign='center'
             style={{height: '100%'}}
-            verticalAlign='middle'
+            //verticalAlign='middle'
             >
             <Grid.Column style={{maxWidth: 450}}>
               <Menu pointing attached='top' widths={3}>
@@ -60,9 +62,6 @@ handleItemClick = (event, data) => {
 
             </Grid.Column>
           </Grid>
-
-
-
       </div>
     )
   }

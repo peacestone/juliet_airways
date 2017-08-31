@@ -14,7 +14,12 @@ const fetchFlights = (flightInput) => {
          //{flights: {departure_city: 'ATL', arival_city: "JFK", departure_date: '2017-10-22'}})
         }
       )
-       .then(response => response.json() )
+       .then(response => {
+         if (response.ok) {
+         return response.json()
+        }
+        throw new Error('THis is awesome')
+       })
 
        .then((flights) => {return dispatch({type: 'RECEIVE_FLIGHTS', payload: flights })})
      }

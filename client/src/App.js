@@ -12,6 +12,7 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
+
           <Segment inverted color='violet' > <Header style={{letterSpacing: '0.3em'}} size='huge'  id='logo'><Link to='/' style={{color: '#fff'}} >Juliet Airways</Link></Header>  </Segment>
           <Route exact path='/' component={FlightsInput} />
           <Route exact path='/flights/travelersDetails' component={TravelersDetailsInput} />

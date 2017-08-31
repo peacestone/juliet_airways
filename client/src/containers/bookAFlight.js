@@ -4,6 +4,9 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import fetchFlights from '../actions/fetchFlights'
 import { withRouter } from 'react-router'
+import { DateRangePicker, SingleDatePicker, DayPickerRangeController } from 'react-dates';
+import 'react-dates/lib/css/_datepicker.css';
+import moment from 'moment'
 
 
 class BookAFlight extends Component {
@@ -12,7 +15,7 @@ class BookAFlight extends Component {
     this.state = {
         departure_city: '',
         arival_city: '',
-        departure_date: '',
+        departure_date: null,
 
         formErrors: {
 
@@ -22,8 +25,11 @@ class BookAFlight extends Component {
         departureDateIsInvalid: false,
         isValidForm: true,
     }
+    this.today = moment()
     this.handleClick = this.handleClick.bind(this)
   }
+
+
 
 
   validateForm = (formInput) => {
@@ -33,7 +39,7 @@ class BookAFlight extends Component {
     if (formInput.arival_city === '') {
       isValid = false
       this.setState({arivalCityIsInvalid: true})
-     errors.arival_city = 'Please enter a valid arival city city to continue'
+     errors.arival_city = 'Please enter a valid arival city to continue'
     }
 
     if (formInput.departure_city === '') {
@@ -42,18 +48,19 @@ class BookAFlight extends Component {
       this.setState({departureCityIsInvalid: true})
   }
 
-    if (!formInput['departure_date']) {
+    if (!formInput['departure_date'] || !formInput['departure_date']._isAMomentObject) {
       isValid = false
       this.setState({departureDateIsInvalid: true})
-      errors.departure_date =  'Please enter a departure date'
+      errors.departure_date =  'Please enter a valid departure date'
     }
     return {isValid: isValid, errors: errors}
   }
 
-  handleChange = (e, data) => { this.setState({[data.name]: data.value})}
+  handleChange = (e, data) => {
+    this.setState({[data.name]: data.value})}
+
 
   handleClick = function(e, data) {
-    debugger
     const isValid = this.validateForm(this.state)
     if (isValid.isValid){
       const {arival_city, departure_city, departure_date} = this.state
@@ -73,14 +80,34 @@ class BookAFlight extends Component {
 
     return(
       <Form error={!this.state.isValidForm} autoComplete="on" size='large' >
-
       {!this.state.isValidForm && <Message error header={`Please Fix the ${Object.values(this.state.formErrors).length} fields indicated`}  list={Object.values(this.state.formErrors) } />}
-
-      <Form.Dropdown placeholder='From' onChange={this.handleChange} name='departure_city' error={!!this.state.departureCityIsInvalid} noResultsMessage="Sorry, we don't fly there yet" minCharacters={3} search selection options={cityOptions} />
+      <Form.Dropdown  placeholder='From' onChange={this.handleChange} name='departure_city' error={!!this.state.departureCityIsInvalid} noResultsMessage="Sorry, we don't fly there yet" minCharacters={3} search selection options={cityOptions} />
 
       <Form.Dropdown onChange={this.handleChange} placeholder='To' name='arival_city' error={!!this.state.arivalCityIsInvalid} noResultsMessage="Sorry, we don't fly there yet" minCharacters={3} search selection options={cityOptions} />
 
-      <Form.Input error={!!this.state.departureDateIsInvalid} name='departure_date' focus type='date' size='large' fluid onChange={this.handleChange} placeholder='Departure Date'  />
+
+      <Form.Input  fluid>
+      <SingleDatePicker
+      showDefaultInputIcon
+      daySize={45}
+      //showInput
+        isOutsideRange={
+          date => !moment(date).isBetween(this.today, this.today.clone().add(6, 'months'), null, [])
+        }
+        //anchorDirection='center'
+        //orientation="vertical"
+        placeholder='mm/dd/yyyy'
+
+        date={this.state.departure_date} // momentPropTypes.momentObj or null
+        onDateChange={date => this.setState({departure_date: date})} // PropTypes.func.isRequired
+        focused={this.state.focused} // PropTypes.bool
+        onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired
+        hideKeyboardShortcutsPanel={true}
+      />
+      </Form.Input>
+
+
+
       <Button color='green' onClick={this.handleClick} fluid size='large'>FIND FLIGHTS</Button>
       {console.log(this.state)}
       </Form>
