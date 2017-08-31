@@ -11,7 +11,7 @@ const flightResults = (props) => {
   }
   return (
     <div>
-      {props.isLoading ? <Loader /> : null}
+      {props.isLoading === 'true' ? <Loader /> : null}
       {list}
     </div>
   )

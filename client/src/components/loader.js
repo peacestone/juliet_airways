@@ -3,16 +3,14 @@ import {connect} from 'react-redux'
 
 import { Dimmer, Loader} from 'semantic-ui-react'
 
-const loader = (props) => {
+const loader = () => {
 return (
-  <Dimmer page  active={props.isLoading === 'true'}>
+  <Dimmer page  active>
 
     <Loader size='large' >Loading</Loader>
   </Dimmer>
 )}
 
-const mapStateToProps = state => (
-  {isLoading: state.flights.isLoading}
-)
 
-export default connect(mapStateToProps)(loader)
+
+export default loader
