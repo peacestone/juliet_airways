@@ -3,9 +3,11 @@ class ReservationsController < ApplicationController
   def create
     reservation = Reservation.new(reservations_params.except(:day, :month, :year, :confirm_email))
     reservation.dob = "#{reservations_params[:year]}-#{reservations_params[:month]}-#{reservations_params[:day]}"
-    reservation.save
-
-    render json: reservation, payment_info: reservation_payment_params
+     if reservation.save
+       render json: reservation, payment_info: reservation_payment_params
+     else
+       render json: {reservation: reservation.errors}
+     end
   end
 
 

@@ -81,6 +81,7 @@ class BookAFlight extends Component {
     return(
       <Form error={!this.state.isValidForm} autoComplete="on" size='large' >
       {!this.state.isValidForm && <Message error header={`Please Fix the ${Object.values(this.state.formErrors).length} fields indicated`}  list={Object.values(this.state.formErrors) } />}
+
       <Form.Dropdown  placeholder='From' onChange={this.handleChange} name='departure_city' error={!!this.state.departureCityIsInvalid} noResultsMessage="Sorry, we don't fly there yet" minCharacters={3} search selection options={cityOptions} />
 
       <Form.Dropdown onChange={this.handleChange} placeholder='To' name='arival_city' error={!!this.state.arivalCityIsInvalid} noResultsMessage="Sorry, we don't fly there yet" minCharacters={3} search selection options={cityOptions} />
@@ -97,7 +98,6 @@ class BookAFlight extends Component {
         //anchorDirection='center'
         //orientation="vertical"
         placeholder='mm/dd/yyyy'
-
         date={this.state.departure_date} // momentPropTypes.momentObj or null
         onDateChange={date => this.setState({departure_date: date})} // PropTypes.func.isRequired
         focused={this.state.focused} // PropTypes.bool

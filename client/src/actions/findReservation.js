@@ -10,7 +10,7 @@ export default (reservation_query) => {
 
     .then(
       response => {
-        response.json()
+        return response.json()
       }
     )
     .then(({reservation}) => dispatch({type: 'RECIEVE_RESERVATION', payload: {reservation}}))
