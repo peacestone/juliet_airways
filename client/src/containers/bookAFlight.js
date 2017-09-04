@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
-import {Form, Button,Dropdown, Message,Label, Icon} from 'semantic-ui-react'
+import {Form, Button, Message} from 'semantic-ui-react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import fetchFlights from '../actions/fetchFlights'
 import { withRouter } from 'react-router'
-import { DateRangePicker, SingleDatePicker, DayPickerRangeController } from 'react-dates';
+import {  SingleDatePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
 import moment from 'moment'
 
@@ -33,7 +33,6 @@ class BookAFlight extends Component {
 
 
   validateForm = (formInput) => {
-    const validCitys = ['ATL', 'JFK']
     let errors = {}
     let isValid = true
     if (formInput.arival_city === '') {
@@ -76,7 +75,7 @@ class BookAFlight extends Component {
 
 
   render(){
-    const cityOptions = [{key: 'JFK', text: 'New York- Kennedy, NY (JFK)', value: 'JFK'}, {key: 'ATL', text: 'Atlanta, GA (ATL)', value: "ATL"}]
+    const cityOptions = [{key: 'JFK', text: 'New York- Kennedy, NY (JFK)', value: 'JFK'}, {key: 'ATL', text: 'Atlanta, GA (ATL)', value: "ATL"}, {key: 'IAD', text: 'Washington-Dulles, DC (IAD)', value: 'IAD'}, {key: 'ORD', text: 'Chicago-Ohare, IL (ORD)', value: 'ORD'}]
 
     return(
       <Form error={!this.state.isValidForm} autoComplete="on" size='large' >

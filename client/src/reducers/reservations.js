@@ -6,6 +6,8 @@ const reservations = (state={isFetching: false, reservation: { flight: {flight_n
         return Object.assign({}, state, {isFetching: 'true'})
       case 'RECIEVE_RESERVATION':
         return Object.assign({}, state, {isFetching: 'false'}, action.payload)
+      case 'CLEAR_RESERVATION':
+        return Object.assign({}, {isFetching: false, reservation: { flight: {flight_number: ''}, payment_info: {}}, traveler_info: {}} )
     default:
       return state
   }

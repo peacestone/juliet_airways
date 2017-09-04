@@ -13,7 +13,12 @@ class ReservationsController < ApplicationController
 
   def find
     reservation = Reservation.find_by(confirmation_number: find_params[:confirmation_number], first_name: find_params[:first_name], last_name: find_params[:last_name] )
-    render json: reservation
+
+      if reservation
+        render json: reservation
+      else
+        render json: {error: 'No Reservations Found'}
+      end
   end
 
   private

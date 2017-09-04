@@ -4,6 +4,7 @@ import {connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import addTravelersDetails from '../actions/addTravelersDetails'
 
+
 class TripSummary extends React.Component {
 
   constructor(props) {
@@ -86,6 +87,7 @@ class TripSummary extends React.Component {
         <span>{this.props.request.departure_date}, {this.props.selectedFlight.arival_time}</span><br /> <br />
         <span>Total:</span><strong>${this.props.selectedFlight.price}</strong>
       </Segment>
+
       <Header  textAlign='center'  as='h1'>Traveler Information</Header>
      <Container style={{width: '70%', float: 'left', paddingLeft: '10%'}}>
 

@@ -1,19 +1,2 @@
-wasbody. {
-  min-height: 100%;
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-  background-image: url('./mt.jpeg');
-  background-size: cover;
-
-}
-
-.oldflight-summary {
-float: left;
-margin-bottom: 10px;
-margin-top: 15px;
-padding-left: 15px;
-width: 24.25em;
- }
 
 html, body,  #root, .App { height:100%; min-height: 100%}

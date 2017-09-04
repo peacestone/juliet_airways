@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux'
 import fetchFlights from '../actions/fetchFlights'
 import {connect} from 'react-redux'
-import {  Menu, Grid, Segment, Container } from 'semantic-ui-react'
-import img from "../mt.jpeg"
+import {  Menu, Grid, Segment } from 'semantic-ui-react'
+import img from "../beach.jpg"
 import BookAFlight from './bookAFlight'
 import MyTrips from './myTrips'
 import FlightStatus from './flightStatus'
@@ -43,7 +43,7 @@ handleItemClick = (event, data) => {
 
     }
     return (
-      <div style={{backgroundImage: "url(" + img  + ")", backgroundSize: 'cover', minHeight: '100%'}} >
+      <div  id='flightInput' style={{backgroundImage: "url(" + img  + ")", minHeight: '100%', backgroundSize: 'cover', position: 'relative'}} >
           <Grid
            textAlign='center'
             style={{height: '100%'}}
@@ -63,6 +63,7 @@ handleItemClick = (event, data) => {
             </Grid.Column>
           </Grid>
       </div>
+
     )
   }
 }
