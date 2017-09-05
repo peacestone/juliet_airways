@@ -11,7 +11,7 @@ export default (flightInfo) => {
       response => response.json()
     .then(
         flight => { console.log(flight)
-           dispatch({type: 'SELECT_FLIGHT', payload: flight})}
+           dispatch({type: 'RECEIVE_FLIGHT_STATUS', payload: flight})}
       )
     )
   }
