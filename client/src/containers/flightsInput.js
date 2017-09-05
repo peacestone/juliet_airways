@@ -69,6 +69,8 @@ import FlightStatusTable from '../components/flightStatusTable'
               </Segment>
             </div>
 
+            {this.props.toggleStatusTable && <FlightStatusTable />}
+            {console.log(this.props)}
             </Grid.Column>
           </Grid>
           { this.props.toggleStatusTable && <Container >
