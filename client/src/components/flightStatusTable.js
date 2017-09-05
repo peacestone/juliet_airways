@@ -2,18 +2,10 @@ import React from 'react'
 import {Table, Segment, Header} from 'semantic-ui-react'
 import {connect} from 'react-redux'
 
-<<<<<<< HEAD
-
-
 const flightStatusTable = (props) => {
   return (
       <Segment  >
        <Header size='large'><span>Flight {props.flightStatus.flight.flight_number} on {props.flightStatus.meta.flight_date}</span></Header>
-=======
-const flightStatusTable = (props) => (
-      <Segment>
-       <Header size='large'><span>Flight {props.flightStatus.flight_number} on {props.flightStatus.meta.flight_date}</span></Header>
->>>>>>> db66ebf7480e82ef1263e6f6f1a6150521a098e3
         <Table celled>
           <Table.Header>
             <Table.Row>
@@ -39,16 +31,10 @@ const flightStatusTable = (props) => (
             </Table.Row>
           </Table.Body>
         </Table>
-<<<<<<< HEAD
       </Segment>
 
 )}
-=======
-        {console.log(props)}
-      </Segment>
 
-)
->>>>>>> db66ebf7480e82ef1263e6f6f1a6150521a098e3
 
 const mapStateToProps = state => (
   {flightStatus: state.flightStatus}
