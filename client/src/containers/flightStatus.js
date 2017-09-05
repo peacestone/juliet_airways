@@ -44,7 +44,7 @@ class FlightStatus extends Component {
     return(
       <Form autoComplete="on" size='large' >
       <Form.Select  label='Flight Date' name='flight_date' options={options} onChange={this.handleChange} value={this.state.flight_date}   />
-      <Form.Input focus fluid size='large' onChange={this.handleChange} name='flight_number' placeholder='Flight Number' />
+      <Form.Input focus fluid size='large' onChange={this.handleChange}  name='flight_number' placeholder='Flight Number' />
       <Button color='green' onClick={this.handleClick} fluid size='large'>VIEW STATUS</Button>
       </Form>
     )
