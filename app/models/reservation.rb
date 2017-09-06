@@ -3,8 +3,9 @@ class Reservation < ApplicationRecord
 
   after_create :generate_confirmation
 
-  belongs_to :flight, foreign_key: 'flight_number'
+  self.primary_key = confirmation_number
 
+  belongs_to :flight
 
 
   private

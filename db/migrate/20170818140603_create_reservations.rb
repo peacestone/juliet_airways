@@ -9,7 +9,7 @@ class CreateReservations < ActiveRecord::Migration[5.0]
       t.datetime :dob
       t.string :email
       t.string :telephone
-      t.string :flight_number
+      t.belongs_to :flight
       t.string :confirmation_number
       t.index  :confirmation_number, unique: true
       t.datetime :departure_date

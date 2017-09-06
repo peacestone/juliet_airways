@@ -13,15 +13,13 @@
 ActiveRecord::Schema.define(version: 20170818140603) do
 
   create_table "flights", force: :cascade do |t|
-    t.string   "flight_number"
     t.string   "departure_city"
     t.string   "arival_city"
-    t.datetime "departure_time"
-    t.datetime "arival_time"
-    t.string   "total_fly_time"
+    t.datetime "departure_datetime"
+    t.datetime "arival_datetime"
     t.integer  "price"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
   create_table "reservations", force: :cascade do |t|
@@ -33,12 +31,13 @@ ActiveRecord::Schema.define(version: 20170818140603) do
     t.datetime "dob"
     t.string   "email"
     t.string   "telephone"
-    t.string   "flight_number"
+    t.integer  "flight_id"
     t.string   "confirmation_number"
     t.datetime "departure_date"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
     t.index ["confirmation_number"], name: "index_reservations_on_confirmation_number", unique: true
+    t.index ["flight_id"], name: "index_reservations_on_flight_id"
   end
 
 end
