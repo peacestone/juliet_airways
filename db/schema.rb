@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20170818140603) do
     t.datetime "departure_datetime"
     t.datetime "arival_datetime"
     t.integer  "price"
+    t.integer  "flight_number"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
   end
@@ -33,7 +34,6 @@ ActiveRecord::Schema.define(version: 20170818140603) do
     t.string   "telephone"
     t.integer  "flight_id"
     t.string   "confirmation_number"
-    t.datetime "departure_date"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
     t.index ["confirmation_number"], name: "index_reservations_on_confirmation_number", unique: true
