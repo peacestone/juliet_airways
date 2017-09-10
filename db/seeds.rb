@@ -98,7 +98,7 @@ puts "Seeding..."
       departure_date_time = flight[:departure_date_time] + count.days
 
       if !departure_date_time.saturday? && !departure_date_time.sunday?
-        Flight.create(departure_city: "JFK", arival_city: "ATL", departure_datetime: departure_date_time , arival_datetime: flight[:arival_date_time] + count.days, price: 200 + rand(1..250), flight_number: flight[:flight_number] )
+        Flight.create(departure_city: "ORD", arival_city: "JFK", departure_datetime: departure_date_time , arival_datetime: flight[:arival_date_time] + count.days, price: 200 + rand(1..250), flight_number: flight[:flight_number] )
       end
    end
    count += 1
