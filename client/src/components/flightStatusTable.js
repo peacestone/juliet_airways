@@ -5,7 +5,7 @@ import {connect} from 'react-redux'
 const flightStatusTable = (props) => {
   return (
       <Segment  >
-       <Header size='large'><span>Flight {props.flightStatus.flight.flight_number} on {props.flightStatus.meta.flight_date}</span></Header>
+       <Header size='large'><span>Flight {props.flightStatus.flight.flight_number} on {props.flightStatus.flight.departure_date}</span></Header>
         <Table celled>
           <Table.Header>
             <Table.Row>

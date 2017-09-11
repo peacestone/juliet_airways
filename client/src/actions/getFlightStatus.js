@@ -10,8 +10,14 @@ export default (flightInfo) => {
     .then(
       response => response.json()
     .then(
-        flight => { console.log(flight)
-           dispatch({type: 'RECEIVE_FLIGHT_STATUS', payload: flight})}
+        flight => {
+          if (!flight.error){
+           dispatch({type: 'RECEIVE_FLIGHT_STATUS', payload: flight})
+           return
+         }
+
+         dispatch({type: 'BAD_INPUT'})
+         }
       )
     )
   }

@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Form, Button} from 'semantic-ui-react'
+import {Form, Button, Message} from 'semantic-ui-react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import { withRouter } from 'react-router'
@@ -25,7 +25,6 @@ class FlightStatus extends Component {
 
   handleClick = event => {
     this.props.getFlightStatus(this.state)
-    //this.props.history.push('/flights/status')
   }
 
    handleChange = (e, {name, value}) => {
@@ -42,9 +41,10 @@ class FlightStatus extends Component {
       {key: 3, text: `Yeseterday, ${yesterday.clone().format("MMM Do YYYY")}`, value: yesterday.clone().toISOString()}
     ]
     return(
-      <Form autoComplete="on" size='large' >
-      <Form.Select  label='Flight Date' name='flight_date' options={options} onChange={this.handleChange} value={this.state.flight_date}   />
-      <Form.Input focus fluid size='large' onChange={this.handleChange}  name='flight_number' placeholder='Flight Number' />
+      <Form autoComplete="on" size='large' error={this.props.error} >
+      {this.props.error && <Message error header='No flights were found!' />}
+      <Form.Select error={this.props.error} label='Flight Date' name='flight_date' options={options} onChange={this.handleChange} value={this.state.flight_date}   />
+      <Form.Input error={this.props.error} focus fluid size='large' onChange={this.handleChange}  name='flight_number' placeholder='Flight Number' />
       <Button color='green' onClick={this.handleClick} fluid size='large'>VIEW STATUS</Button>
       </Form>
     )
@@ -55,6 +55,8 @@ const mapDispatchToProps = dispatch => (
   bindActionCreators({getFlightStatus: getFlightStatus}, dispatch)
 )
 
+const mapStateToProps = state => (
+  {error: state.flightStatus.error}
+)
 
-
-export default withRouter(connect(null, mapDispatchToProps)(FlightStatus))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(FlightStatus))
