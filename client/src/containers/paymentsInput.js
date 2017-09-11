@@ -34,7 +34,8 @@ class paymentsInput extends React.Component {
     event.preventDefault()
     const isValid = this.validateForm(this.state)
     if (isValid.valid) {
-      this.props.createReservation(Object.assign({},  this.props.traveler_info, {departure_date: this.props.request.departure_date} , {flight_number: this.props.selectedFlight.flight_number}, {payment_info: this.state}))
+      this.props.createReservation(Object.assign({},  this.props.traveler_info, {flight_id: this.props.selectedFlight.id}, {payment_info: Object.assign({}, this.state)})
+    )
 
       this.props.history.push('/reservations/confirmed')
     }

@@ -23,7 +23,7 @@ class ReservationsController < ApplicationController
 
   private
     def reservations_params
-       reservation ||= params.require(:reservation).permit(:first_name, :last_name, :middle_name, :frequent_flyer_number, :gender, :day, :month, :year, :email, :confirm_email, :telephone, :flight_number, :departure_date)
+       reservation ||= params.require(:reservation).permit(:first_name, :last_name, :middle_name, :frequent_flyer_number, :gender, :day, :month, :year, :email, :confirm_email, :telephone, :flight_id)
     end
 
     def reservation_payment_params

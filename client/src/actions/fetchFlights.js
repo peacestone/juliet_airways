@@ -21,7 +21,8 @@ const fetchFlights = (flightInput) => {
         throw new Error(response.statusText)
        })
 
-       .then((flights) => {return dispatch({type: 'RECEIVE_FLIGHTS', payload: flights })})
+       .then((flights) => { console.log(flights)
+         return dispatch({type: 'RECEIVE_FLIGHTS', payload: flights })})
      }
    )
  }

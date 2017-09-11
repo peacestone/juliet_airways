@@ -3,7 +3,7 @@ class Reservation < ApplicationRecord
 
   after_create :generate_confirmation
 
-  self.primary_key = confirmation_number
+  #self.primary_key = confirmation_number
 
   belongs_to :flight
 

@@ -75,7 +75,7 @@ class BookAFlight extends Component {
 
 
   render(){
-    const cityOptions = [{key: 'JFK', text: 'New York- Kennedy, NY (JFK)', value: 'JFK'}, {key: 'ATL', text: 'Atlanta, GA (ATL)', value: "ATL"}, {key: 'IAD', text: 'Washington-Dulles, DC (IAD)', value: 'IAD'}, {key: 'ORD', text: 'Chicago-Ohare, IL (ORD)', value: 'ORD'}]
+    const cityOptions = [{key: 'JFK', text: 'New York- Kennedy, NY (JFK)', value: 'JFK'}, {key: 'ATL', text: 'Atlanta, GA (ATL)', value: "ATL"}, {key: 'IAD', text: 'Washington-Dulles, DC (IAD)', value: 'IAD'}, {key: 'ORD', text: 'Chicago-Ohare, IL (ORD)', value: 'ORD'}, {key: 'MIA', text: 'Miami, FL (MIA)', value: 'MIA'}]
 
     return(
       <Form error={!this.state.isValidForm} autoComplete="on" size='large' >

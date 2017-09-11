@@ -11,9 +11,9 @@ const Success = ({reservation, isFetching}) => (
       <Segment >
         <Header>Flight Resevation<div style={{float: 'right', border: 'dashed 2px grey', paddingRight: '4%', paddingLeft: '4%', textAlign: 'center'}}>Flight Confirmation #<br /> {reservation.confirmation_number}</div> </Header>
           <strong>Juliet Airlines</strong> JL {reservation.flight.flight_number}  <br /> <br />
-          <span><strong>Departs:</strong>  <br />
-          {reservation.departure_date}, {reservation.flight.departure_time} </span> <br /> <br />
-          <span><strong>Arives:</strong> {reservation.arival_city}<br /> {reservation.departure_date}, {reservation.flight.arival_time} </span>
+          <span><strong>Departs:</strong> {reservation.flight.departure_city}  <br />
+          {reservation.flight.departure_date}, {reservation.flight.departure_time} </span> <br /> <br />
+          <span><strong>Arives:</strong> {reservation.flight.arival_city}<br /> {reservation.flight.departure_date}, {reservation.flight.arival_time} </span>
           <Header dividing>Passenger Info</Header>
           <strong>Name: </strong> <span> {reservation.first_name} {reservation.middle_name} {reservation.last_name} </span> <br />
           <strong>Seat:</strong> <span>16D</span>

@@ -1,16 +1,19 @@
 class FlightsController < ApplicationController
 
   def find
+    request_date = DateTime.parse(flight_params[:departure_date])
+    beginning_to_end_of_day = request_date.beginning_of_day..request_date.end_of_day
 
     requested_departure_city = flight_params[:departure_city]
     requested_arival_city = flight_params[:arival_city]
     sort_by = flight_params[:sort_by].nil? ? 'departure_datetime' : flight_params[:sort_by]
 
+
     #unless requested_departure_day < DateTime.current || requested_departure_day > DateTime.current + 90.days
       #flights = Flight.where departure_city: requested_departure_city, arival_city: requested_arival_city
-      flights = Flight.order(sort_by => :asc).where departure_city: requested_departure_city, arival_city: requested_arival_city, departure_datetime: entire_day_of(flight_params[:departure_date])
+      flights = Flight.order(sort_by => :asc).where departure_city: requested_departure_city, arival_city: requested_arival_city, departure_datetime: beginning_to_end_of_day
 
-       render json: flights
+       render json: flights, meta: {departure_city: requested_departure_city, arival_city: requested_arival_city, departure_date: Flight.format_date(request_date)}, meta_key: 'request'
     # else
       # render json: {error: "Invalid requested date"}
      #end
@@ -33,11 +36,6 @@ class FlightsController < ApplicationController
 
   def status_params
     params.require(:flights).permit(:flight_date, :flight_number)
-  end
-
-  def entire_day_of(datetime_iso_string)
-    request_iso_date = DateTime.iso8601(datetime_iso_string)
-    request_iso_date.beginning_of_day..request_iso_date.end_of_day
   end
 
 end

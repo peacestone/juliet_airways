@@ -47,7 +47,7 @@ class flightsList extends React.Component {
   }
 
 render() {
- const sortOptions = [ {text: 'Departure Time', value: 'departure_time'}, {  text: 'Arival Time', value: 'arival_time'}, {text: 'Price', value: 'price'}]
+ const sortOptions = [ {text: 'Departure Time', value: 'departure_datetime'}, {  text: 'Arival Time', value: 'arival_datetime'}, {text: 'Price', value: 'price'}]
 
 
    const flights = this.props.flights.flights.map((flight, index) => <Flight key={index}   flight={flight} /> )
