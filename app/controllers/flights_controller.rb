@@ -1,9 +1,7 @@
 class FlightsController < ApplicationController
 
   def find
-
     requested_departure_day = DateTime.parse(flight_params[:departure_date])
-
     requested_departure_city = flight_params[:departure_city]
     requested_arival_city = flight_params[:arival_city]
     sort_by = flight_params[:sort_by].nil? ? 'departure_datetime' : flight_params[:sort_by]
@@ -13,10 +11,11 @@ class FlightsController < ApplicationController
       #flights = Flight.where departure_city: requested_departure_city, arival_city: requested_arival_city
       flights = Flight.order(sort_by => :asc).where departure_city: requested_departure_city, arival_city: requested_arival_city, departure_datetime: between_beginning_to_end_of(requested_departure_day)
 
-       render json: flights, meta: {departure_city: requested_departure_city, arival_city: requested_arival_city, departure_date: Flight.format_date(requested_departure_day) }, meta_key: 'request'
-    # else
-      # render json: {error: "Invalid requested date"}
-     #end
+      if flights.empty?
+        render json: {error: "Their are no flights on the queried date"}
+      else
+        render json: flights, meta: {departure_city: requested_departure_city, arival_city: requested_arival_city, departure_date: Flight.format_date(requested_departure_day) }, meta_key: 'request'
+      end
 
   end
 

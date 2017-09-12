@@ -2,16 +2,14 @@ import React from 'react'
 import Flight from './flight'
 import {connect } from 'react-redux'
 import { Link} from 'react-router-dom'
-import { Grid , Container, Dropdown, Header} from 'semantic-ui-react'
+import { Grid , Container, Message, Dropdown, Header} from 'semantic-ui-react'
 import fetchFlights from '../actions/fetchFlights'
 import {bindActionCreators} from 'redux'
 import selectFlight from '../actions/selectFlight'
+import Loader from './loader'
 
 const InlineStyle = () => (
 <style>{`
-  #dropdown {
-
-  }
   .price:hover {
     background-color: blue;
     color: #fff;
@@ -23,12 +21,6 @@ const InlineStyle = () => (
   .hiddenText {
     visibility: hidden
   }
-
-  #figureOUtflights-list {
-    background-color: #c6bbff
-  }
-
-
   `}</style>
 )
 
@@ -49,8 +41,16 @@ class flightsList extends React.Component {
 render() {
  const sortOptions = [ {text: 'Departure Time', value: 'departure_datetime'}, {  text: 'Arival Time', value: 'arival_datetime'}, {text: 'Price', value: 'price'}]
 
+ if (this.props.isLoading === 'true') {
+    return <Loader />
+  }
 
-   const flights = this.props.flights.flights.map((flight, index) => <Flight key={index}   flight={flight} /> )
+ if (this.props.flights.error) {
+   return <Message warning  size='huge' header={this.props.flights.error} />
+  }
+
+
+  const flights = this.props.flights.flights.map((flight, index) => <Flight key={index}   flight={flight} /> )
 
   return (
     <div id='flights-list'>
@@ -87,7 +87,7 @@ render() {
 
 
 const mapStateToProps = (state) => {
-  return {flights: state.flights, selectedFlight: state.selectedFlight}
+  return {flights: state.flights, selectedFlight: state.selectedFlight, isLoading: state.flights.isLoading}
 }
 
 const mapDispatchToProps = dispatch => {
