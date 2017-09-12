@@ -2,6 +2,7 @@ class FlightsController < ApplicationController
 
   def find
 
+    requested_departure_day = DateTime.parse(flight_params[:departure_date])
 
     requested_departure_city = flight_params[:departure_city]
     requested_arival_city = flight_params[:arival_city]
@@ -10,9 +11,9 @@ class FlightsController < ApplicationController
 
     #unless requested_departure_day < DateTime.current || requested_departure_day > DateTime.current + 90.days
       #flights = Flight.where departure_city: requested_departure_city, arival_city: requested_arival_city
-      flights = Flight.order(sort_by => :asc).where departure_city: requested_departure_city, arival_city: requested_arival_city, departure_datetime: between_beginning_to_end_of(flight_params[:departure_date])
+      flights = Flight.order(sort_by => :asc).where departure_city: requested_departure_city, arival_city: requested_arival_city, departure_datetime: between_beginning_to_end_of(requested_departure_day)
 
-       render json: flights, meta: {departure_city: requested_departure_city, arival_city: requested_arival_city, departure_date: Flight.format_date(request_date)}, meta_key: 'request'
+       render json: flights, meta: {departure_city: requested_departure_city, arival_city: requested_arival_city, departure_date: Flight.format_date(requested_departure_day) }, meta_key: 'request'
     # else
       # render json: {error: "Invalid requested date"}
      #end
@@ -21,7 +22,8 @@ class FlightsController < ApplicationController
 
 
   def status
-    flight = Flight.where(flight_number: status_params[:flight_number], departure_datetime: between_beginning_to_end_of(status_params[:flight_date]) ).take
+    requested_departure_day = DateTime.parse(status_params[:flight_date])
+    flight = Flight.where(flight_number: status_params[:flight_number], departure_datetime: between_beginning_to_end_of(requested_departure_day) ).take
 
     if flight.present?
       render json: flight, flight_status: 'ON TIME'
@@ -41,8 +43,7 @@ class FlightsController < ApplicationController
     params.require(:flights).permit(:flight_date, :flight_number)
   end
 
-  def between_beginning_to_end_of(date_string)
-    date = DateTime.parse(date_string)
+  def between_beginning_to_end_of(date)
     date.beginning_of_day..date.end_of_day
   end
 

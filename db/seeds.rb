@@ -39,13 +39,13 @@ puts "Seeding..."
    { departure_date_time: DateTime.iso8601('2017-09-06T21:45'), arival_date_time: DateTime.iso8601('2017-09-06T00:09'), flight_number: 12}
  ]
 
-  start_date = flights_atl_jfk[0][:departure_date_time]
+  start_date = flights_jfk_atl[0][:departure_date_time]
   last_date = start_date + 180.day
   count = 0
 
    while start_date + count.days < last_date do
 
-    flights_atl_jfk.each do |flight|
+    flights_jfk_atl.each do |flight|
       departure_date_time = flight[:departure_date_time] + count.days
 
       if !departure_date_time.saturday? && !departure_date_time.sunday?
