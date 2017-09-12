@@ -31,9 +31,5 @@ const mapDispatchToProps = (dispatch) => (
   bindActionCreators({selectFlight}, dispatch)
 )
 
-//don't know why the heck this is here
-//const mapStateToProps = state => (
-  //{selectedFlight: state.selectedFlight}
-//)
 
 export default withRouter(connect(null, mapDispatchToProps)(flight))

@@ -10,7 +10,7 @@ import FlightStatus from './flightStatus'
 import FlightStatusTable from '../components/flightStatusTable'
 
 
- class FlightsInput extends Component {
+ class Widget extends Component {
 
    constructor(props){
      super(props)
@@ -19,37 +19,29 @@ import FlightStatusTable from '../components/flightStatusTable'
      }
    }
 
-
-
   handleItemClick = (event, data) => {
     this.setState({activeItem: data.name}
   )}
-
-
 
  handleDivClick = (event, data) => {
    !!this.props.toggleStatusTable && this.props.disableStatusTable()
 
  }
 
-
-
-
-
   render() {
-    let widgetComponent = <div />
+    let activeItem
     if (this.state.activeItem === 'bookAFlight') {
-      widgetComponent = <BookAFlight />
+      activeItem = <BookAFlight />
     }
     else if (this.state.activeItem === 'myTrips') {
-      widgetComponent = <MyTrips />
+      activeItem = <MyTrips />
     }
     else {
-      widgetComponent = <FlightStatus />
+      activeItem = <FlightStatus />
 
     }
     return (
-      <div  id='flightInput' style={{backgroundImage: "url(" + img  + ")", minHeight: '100%', backgroundSize: 'cover', position: 'relative'}} >
+      <div  id='widget' style={{backgroundImage: "url(" + img  + ")", minHeight: '100%', backgroundSize: 'cover', position: 'relative'}} >
 
           <Grid
            textAlign='center'
@@ -65,7 +57,7 @@ import FlightStatusTable from '../components/flightStatusTable'
               </Menu>
 
               <Segment stacked attached='bottom' style={{marginBottom: '3%'}}>
-                {widgetComponent}
+                {activeItem}
               </Segment>
             </div>
 
@@ -74,7 +66,6 @@ import FlightStatusTable from '../components/flightStatusTable'
           { this.props.toggleStatusTable && <Container >
            <FlightStatusTable  />
           </Container> }
-
       </div>
 
     )
@@ -90,4 +81,4 @@ const mapStateToProps = state => {
   {toggleStatusTable: state.flightStatus.toggleStatusTable}
 )}
 
-export default connect(mapStateToProps, mapDispatchToProps)(FlightsInput)
+export default connect(mapStateToProps, mapDispatchToProps)(Widget)

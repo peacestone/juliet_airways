@@ -24,7 +24,6 @@ class FlightStatus extends Component {
 
 
   handleClick = event => {
-    console.log(this.state)
     this.props.getFlightStatus(this.state)
   }
 
@@ -41,7 +40,6 @@ class FlightStatus extends Component {
       {key: 2, text: `Tomorrow, ${tomorrow.clone().format("MMM Do YYYY")}`, value: tomorrow.clone().format()},
       {key: 3, text: `Yeseterday, ${yesterday.clone().format("MMM Do YYYY")}`, value: yesterday.clone().format()}
     ]
-    console.log(options)
     return(
       <Form autoComplete="on" size='large' error={this.props.error} >
       {this.props.error && <Message error header='No flights were found!' />}
