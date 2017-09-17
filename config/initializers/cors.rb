@@ -11,6 +11,6 @@
 
      resource '*',
       headers: :any,
-       methods: [:get, :post, :put, :patch, :delete, :options, :head]
+       methods: [:post]
    end
  end
