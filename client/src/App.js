@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Widget from './containers/widget'
-import flightsList from './components/flightsList'
+import flightsList from './containers/flightsList'
 import { BrowserRouter as Router, Route, Link} from 'react-router-dom'
 import { Segment, Header } from 'semantic-ui-react'
 import TravelersDetailsInput from './containers/travelersDetailsInput'

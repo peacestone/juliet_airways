@@ -1,12 +1,12 @@
 import React from 'react'
-import Flight from './flight'
+import Flight from '../components/flight'
 import {connect } from 'react-redux'
 import { Link} from 'react-router-dom'
 import { Grid , Container, Message, Dropdown, Header} from 'semantic-ui-react'
 import fetchFlights from '../actions/fetchFlights'
 import {bindActionCreators} from 'redux'
 import selectFlight from '../actions/selectFlight'
-import Loader from './loader'
+import Loader from '../components/loader'
 
 const InlineStyle = () => (
 <style>{`

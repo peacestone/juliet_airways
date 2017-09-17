@@ -6,7 +6,7 @@ const fetchFlights = (flightInput) => {
   return (
     (dispatch) => {
      dispatch({type: 'LOADING_FLIGHTS'})
-      fetch('http://localhost:3001/api/flights/find', {
+       fetch('http://localhost:3001/api/flights/find', {
       headers: {'Content-Type': 'application/json'},
        method: 'POST',
        body: JSON.stringify({flights: flightInput})
@@ -22,7 +22,7 @@ const fetchFlights = (flightInput) => {
        })
 
        .then((flights) => { console.log(flights)
-         return dispatch({type: 'RECEIVE_FLIGHTS', payload: flights })})
+          dispatch({type: 'RECEIVE_FLIGHTS', payload: flights })})
      }
    )
  }
