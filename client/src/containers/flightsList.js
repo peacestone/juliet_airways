@@ -26,13 +26,18 @@ const InlineStyle = () => (
 
 class flightsList extends React.Component {
 
-
+  constructor() {
+    super()
+    this.state = {
+      filterValue: 'departure_datetime'
+    }
+  }
 
   handlePriceClick = (event, data) => {
     this.props.history.push('/flights/trip-summary')
   }
   handleFilterChange = (event, data) => {
-    this.setState({dropdownValue: data.value, filter: 'data.name '})
+    this.setState({filterValue: data.value})
     const requestWithSort = Object.assign({}, this.props.flights.request, {sort_by: data.value} )
 
     this.props.fetchFlights(requestWithSort)
@@ -71,7 +76,7 @@ render() {
 
             <span style={{marginRight: '70%',  color: '#6f51b0'}}><strong>Sorted By</strong> {' '}
 
-               <Dropdown inline onChange={this.handleFilterChange} options={sortOptions} defaultValue={sortOptions[0].value} />
+               <Dropdown inline onChange={this.handleFilterChange} options={sortOptions} value={this.state.filterValue} />
             </span>
           </Grid.Row>
 

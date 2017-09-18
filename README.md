@@ -2,7 +2,7 @@
 
 ## Description
 
-A single page app for booking your next escape on Juliet Airways
+A single page app for booking your next escape on Juliet Airways.
 
 ## Installation
 
