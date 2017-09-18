@@ -90,17 +90,15 @@ class BookAFlight extends Component {
       <SingleDatePicker
       showDefaultInputIcon
       daySize={45}
-      //showInput
         isOutsideRange={
           date => !moment(date).isBetween(this.today, this.today.clone().add(6, 'months'), null, [])
         }
-        //anchorDirection='center'
-        //orientation="vertical"
+
         placeholder='mm/dd/yyyy'
-        date={this.state.departure_date} // momentPropTypes.momentObj or null
-        onDateChange={date => this.setState({departure_date: date})} // PropTypes.func.isRequired
-        focused={this.state.focused} // PropTypes.bool
-        onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired
+        date={this.state.departure_date}
+        onDateChange={date => this.setState({departure_date: date})}
+        focused={this.state.focused}
+        onFocusChange={({ focused }) => this.setState({ focused })}
         hideKeyboardShortcutsPanel={true}
       />
       </Form.Input>
@@ -108,7 +106,6 @@ class BookAFlight extends Component {
 
 
       <Button color='green' onClick={this.handleClick} fluid size='large'>FIND FLIGHTS</Button>
-      {console.log(this.state)}
       </Form>
     )
   }

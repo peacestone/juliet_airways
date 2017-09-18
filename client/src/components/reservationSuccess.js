@@ -1,9 +1,16 @@
 import React from 'react'
-import {Segment, Container, Header } from 'semantic-ui-react'
+import {Segment, Container, Header, Message } from 'semantic-ui-react'
 import {connect} from 'react-redux'
 import Loader from './loader'
 
-const Success = ({reservation, isFetching}) => (
+
+const Success = ({reservation, isFetching, error}) => {
+
+  if (error) {
+    return <Message error size='huge' header={error} />
+  }
+
+return (
   <Container  >
     {isFetching === 'true' ? <Loader /> : null}
     <Header block size='huge'>Your Reservation Details</Header>
@@ -31,10 +38,10 @@ const Success = ({reservation, isFetching}) => (
 
 
   </Container>
-)
+)}
 
 const mapStateToProps = state => {
-  return {reservation: state.reservations.reservation, isFetching: state.reservations.isFetching}
+  return {reservation: state.reservations.reservation, isFetching: state.reservations.isFetching, error: state.reservations.error}
 }
 
 export default connect(mapStateToProps)(Success)

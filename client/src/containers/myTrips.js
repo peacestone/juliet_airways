@@ -22,17 +22,12 @@ class MyTrips extends Component {
   handleClick = event => {
     this.props.clearReservation()
     this.props.findReservation(this.state)
-    this.props.history.push('/reservations/trips')
+    this.props.history.push('/reservations/confirmed')
  }
-
-
-
 
   render(){
     return(
-      <Form error={!!this.props.errors} autoComplete="on" size='large' >
-      {console.log(this.props)}
-      { this.props.errors && <Message error header={this.props.errors}  />}
+      <Form  autoComplete="on" size='large' >
 
       <Form.Input focus fluid size='large' onChange={this.handleChange} name='confirmation_number' placeholder='Confirmation Number' />
       <Form.Input focus size='large' fluid onChange={this.handleChange}  name='first_name' placeholder='First Name' />
@@ -43,9 +38,7 @@ class MyTrips extends Component {
   }
 }
 
-const mapStateToProps = state => (
-  {errors: state.reservations.error}
-)
+
 
 const mapDispatchToProps = dispatch => (
   bindActionCreators({findReservation: findReservation, clearReservation: clearReservation}, dispatch)
@@ -53,4 +46,4 @@ const mapDispatchToProps = dispatch => (
 
 
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MyTrips))
+export default withRouter(connect(null, mapDispatchToProps)(MyTrips))

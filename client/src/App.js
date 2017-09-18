@@ -6,7 +6,6 @@ import { Segment, Header } from 'semantic-ui-react'
 import TravelersDetailsInput from './containers/travelersDetailsInput'
 import PaymentsInput from './containers/paymentsInput'
 import ReservationSuccess from './components/reservationSuccess'
-import ReservationResults from './components/reservationResults'
 
 class App extends Component {
   render() {
@@ -18,7 +17,7 @@ class App extends Component {
           <Route exact path='/flights/travelersDetails' component={TravelersDetailsInput} />
           <Route exact path='/flights/payments' component={PaymentsInput} />
           <Route exact path='/reservations/confirmed' component={ReservationSuccess} />
-          <Route exact path='/reservations/trips' component={ReservationResults} />
+          <Route exact path='/reservations/trips' component={ReservationSuccess} />
 
           <Route exact path='/flights' component={flightsList} />
         </div>
