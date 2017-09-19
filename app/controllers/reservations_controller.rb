@@ -1,5 +1,11 @@
 class ReservationsController < ApplicationController
 
+  def index
+    reservations = Reservation.all
+
+    render json: reservations
+  end
+
   def create
     reservation = Reservation.new(reservations_params.except(:day, :month, :year, :confirm_email))
     reservation.dob = "#{reservations_params[:year]}-#{reservations_params[:month]}-#{reservations_params[:day]}"
